@@ -1,4 +1,5 @@
 # baekjoon_1946 신입사원
+# 서류로 정렬 후 면접등수를 비교하면서 작은 경우를 찾아가는 방식
 
 import sys
 input = sys.stdin.readline
