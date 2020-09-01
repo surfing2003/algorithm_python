@@ -10,15 +10,27 @@
 # i = 3   h_chk[i] = 1   index.pop(1) = 3   index = [0]        result = [-1,2,1,3]
 # i = 4   h_chk[i] = 0   index.pop(0) = 0   index = []         result = [4,2,1,3]
 
+# import sys
+# input = lambda: sys.stdin.readline().rstrip()
+
+# n = int(input())
+# h_chk = list(map(int,input().split()))
+# result = [-1]*n
+# index = list(range(n))
+
+# for i in range(n):
+#     result[index.pop(h_chk[i])] = i+1
+
+# print(' '.join(str(e) for e in result))
+
+# baekjoon 1080 행렬
+# 다시 풀어보기...
 import sys
 input = lambda: sys.stdin.readline().rstrip()
 
-n = int(input())
-h_chk = list(map(int,input().split()))
-result = [-1]*n
-index = list(range(n))
+n , m = map(int, input().split())
+mat_1 = [list(input()) for _ in range(n)]
+mat_2 = [list(input()) for _ in range(n)]
+chk = [[mat_1[i][j]==mat_2[i][j] for j in range(m)] for i in range(n)]
 
-for i in range(n):
-    result[index.pop(h_chk[i])] = i+1
 
-print(' '.join(str(e) for e in result))
