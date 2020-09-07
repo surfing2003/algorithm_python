@@ -36,6 +36,7 @@ for _ in range(n):
             stack -= 1
             if stack < 0:
                 break
+
     if stack == 0:
         print("YES")
     else:
