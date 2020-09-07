@@ -29,3 +29,5 @@ def solution(progresses, speeds):
         else:
             answer[-1][1]+=1
     return [q[1] for q in answer]
+
+print(solution([93, 30, 55],[1, 30, 5]))
