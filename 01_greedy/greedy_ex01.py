@@ -1,5 +1,4 @@
 # 큰 수의 법칙
-
 import sys
 input = lambda : sys.stdin.readline().rstrip()
 
@@ -32,3 +31,33 @@ print(m-cnt) # 두번째로 큰수가 들어가야하는 횟수
 
 answer = (cnt * max_0) + ((m-cnt)*max_1)
 print(answer)
+
+# 책예시2
+import sys
+input = lambda : sys.stdin.readline().rstrip()
+
+n, m = map(int,input().split())
+result = -1
+
+for _ in range(n):
+    data = list(map(int,input().split()))
+    temp = min(data)
+    result = max(result, temp)
+
+print(result)
+
+# 책예시3
+import sys
+input = lambda: sys.stdin.readline().rstrip()
+
+n, k = map(int, input().split())
+answer = 0
+while(n != 1):
+    if n%k == 0:
+        n //= k
+        answer +=1
+    else:
+        n -= 1
+        answer +=1
+print(answer)
+
