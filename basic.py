@@ -23,7 +23,7 @@
 # l = []
 # for _ in range(n):
 #     l.append(input())
-
+s
 # l.sort(key = lambda x : (len(x),chk(x),x))
 
 
@@ -172,3 +172,47 @@ def heap_sort(nums):
 
 print(heap_sort([4, 1, 7, 3, 8, 5]))
 print(heap_sort([1,4,3,2,6,2,1]))
+
+
+#########이진탐색
+def b_search(array, target, start, end):
+    if start>end:
+        return None
+    mid = (start+end) // 2
+
+    if array[mid] == target:
+        return mid
+    elif array[mid] > target:
+        return b_search(array,target,start,mid-1)
+    else:
+        return b_search(array,target,mid+1,end)
+
+def b_search_for(array, target, start,end):
+    while start <= end:
+        mid = (start+end)//2
+        if array[mid] == target:
+            return mid
+        elif array[mid] > target:
+            end = mid-1
+        else:
+            start = mid+1
+    return None
+
+
+temp = [1,3,5,7,9,11,13,15,17,19]
+result = b_search(temp,7,0,len(temp)-1)
+result = b_search(temp,2,0,len(temp)-1)
+
+
+#  정렬되었는지 확인하는 방법
+import sys
+input = lambda: sys.stdin.readline().rstrip()
+
+a = list(map(int,input().split()))
+
+if all(x<y for x,y in zip(a[:-1],a[1:])):
+    print("ascending")
+elif all(x>y for x,y in zip(a[:-1],a[1:])):
+    print("descending")
+else:
+    print("mixed")
