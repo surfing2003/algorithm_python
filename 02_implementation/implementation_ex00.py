@@ -8,7 +8,7 @@ import sys
 input = lambda : sys.stdin.readline().rstrip()
 
 # 내풀이
-n = int(ㄴinput())
+n = int(input())
 answer = 0
 for _ in range(n):
     word = input()
