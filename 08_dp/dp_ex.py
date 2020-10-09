@@ -92,3 +92,42 @@ for i in range(1,n):
         if array[j] < array[i]:
             dp[i] = max(dp[i],dp[j]+1)
 print(n-max(dp))
+
+
+
+# bj 1003
+n = int(input())
+c_0 = [1,0,1]
+c_1 = [0,1,1]
+def fib(chk):
+    if len(c_0) <= chk:
+        for i in range(len(c_0),chk+1):
+            c_0.append(c_0[i-1] +c_0[i-2])
+            c_1.append(c_1[i-1] +c_1[i-2])
+
+    print(c_0[chk],c_1[chk])
+            
+
+for _ in range(n):
+
+    chk = int(input())
+
+    fib(chk)
+
+# bj 9461
+import sys
+input = lambda : sys.stdin.readline().rstrip()
+
+t = int(input())
+d =  [0, 1, 1, 1, 2, 2, 3, 4, 5, 7, 9]
+# d.extend([0]*90) 이것보다는
+
+for i in range(11,101):
+    d.append(d[i-2]+d[i-3]) 
+for _ in range(t):
+    n = int(input())
+    # if n > 10:
+    #     for i in range(11,n+1):
+    #         d[i] = d[i-2] + d[i-3]    # extend 안하는 방식의 경우는 필요없는 부분
+    print(d[n])
+
