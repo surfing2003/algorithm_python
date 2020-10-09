@@ -16,9 +16,7 @@ print(chk[n-1])
 # 1로만들기
 n = int(input())
 
-now = 1
 array = [0] * (30001)
-
 for i in range(2,n+1):
     array[i] = array[i-1] + 1
     
@@ -131,3 +129,16 @@ for _ in range(t):
     #         d[i] = d[i-2] + d[i-3]    # extend 안하는 방식의 경우는 필요없는 부분
     print(d[n])
 
+
+# bj 1463
+x = int(input())
+d =[0] * 1000001
+
+for i in range(2,x+1):
+    d[i] = d[i-1] + 1
+    if i%2 == 0:
+        d[i] = min(d[i],d[i//2]+1)
+    if i%3 == 0:
+        d[i] = min(d[i],d[i//3]+1)
+
+print(d[x])
