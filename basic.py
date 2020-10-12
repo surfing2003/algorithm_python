@@ -228,3 +228,49 @@ for i in range(1,n):
         if array[j] < array[i]:
             dp[i] = max(dp[i],dp[j]+1)
 print(n-max(dp))
+
+
+
+# 선형시간에 해결이 되는 것
+# 투포인터 : 리스트에 순차적으로 접근해야 할 때, 
+# 두 개의 점을 이용해 위치를 기록하면서 계산하는 기법?
+
+# N개의 자연수로 구성된 수열이 있습니다. 
+# 합이 M인 부분 연속 수열의 개수를 구해보세요.
+
+n, m = 5, 5
+data = [1,2,3,2,5]
+
+result = 0
+summary = 0
+end = 0
+
+# start를 차례대로 증가시키며 반복
+for start in range(n):
+    # end를 가능한 만큼 이동시키기
+    while summary < m and end < n:
+        summary += data[end]
+        end += 1
+    
+    if summary == m:
+        result += 1
+    summary -= data[start]
+
+print(result) 
+
+# 접두사합 
+# M개의 쿼리 정보를 통해 구간에 해당하는 데이터의 합을 구하는 문제 
+
+n = 5
+data = [10, 20, 30, 40, 50]
+
+summary = 0
+prefix_sum = [0]
+for i in data:
+    summary += i
+    prefix_sum.append(summary)
+
+left = 3
+right = 4
+print(prefix_sum[right]-prefix_sum[left-1])
+
