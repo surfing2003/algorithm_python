@@ -22,3 +22,20 @@ for _ in range(n):
             print(2)
         else:
             print(0)
+
+# bj 13458 시험감독
+
+n = int(input())
+a = list(map(int,input().split()))
+b, c = map(int, input().split())
+
+total = 0
+for i in a:
+
+    total += 1
+    if i < b:
+        continue
+    i -= b
+    total += -(-i //c)
+
+print(total)
