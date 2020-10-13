@@ -170,3 +170,52 @@ while True:
             break
         turn_time=0
 print(count)
+
+
+# bj 3190 뱀
+from collections import deque
+
+def change(d,c):
+    if c == "L":
+        d = (d - 1) % 4
+    else:
+        d = (d + 1) % 4
+    return d
+
+n = int(input())
+k = int(input())
+maps = [[0] * n for _ in range(n)]
+
+for _ in range(k):
+    x, y = list(map(int,input().split()))
+    maps[x-1][y-1] = 1
+
+l = int(input())
+control = {}
+for _ in  range(l):
+    t, d = input().split()
+    control[int(t)] = d
+
+dx = [-1,0,1,0]
+dy = [0,1,0,-1]
+
+direction = 1
+time = 1
+x,y = 0, 0
+visited = deque([[x,y]])
+maps[x][y] = 2
+while True:
+    x, y = x+dx[direction] ,y+dy[direction]
+    if 0 <= y < n and 0 <=  x < n and maps[x][y] != 2:
+        if not maps[x][y]:
+            temp_x, temp_y = visited.popleft()
+            maps[temp_x][temp_y] = 0
+        maps[x][y] = 2
+        visited.append([x,y])
+        if time in control.keys():
+            direction = change(direction, control[time])
+        time += 1
+    else:
+        break
+
+print(time)
