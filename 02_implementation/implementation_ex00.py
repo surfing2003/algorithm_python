@@ -219,3 +219,41 @@ while True:
         break
 
 print(time)
+
+# bj 14499 주사위 굴리기
+
+N, M, r, c, K = map(int,input().split())
+
+maps = [list(map(int, input().split())) for _ in range(N)]
+
+# 오른쪽(동) 왼쪽(서) 위(남) 아래(북)
+
+dr = [0,0,0,-1,1]
+dc = [0,1,-1,0,0]
+dice = [0, 0, 0, 0, 0, 0]
+time = list(map(int,input().split()))
+
+for t in time:
+    nr = r + dr[t]
+    nc = c + dc[t]
+
+    if (nr < 0 or nr >= N) or (nc < 0  or nc >= M):
+        continue
+    
+    # 주사위 굴리는 부분을 확인하고 알맞게 서로의 위치를 바꿔주는거 신경쓰기
+    if t == 1:
+        dice[0],dice[2],dice[3],dice[5] = dice[3],dice[0],dice[5],dice[2]
+    elif t == 2:
+        dice[0],dice[2],dice[3],dice[5] = dice[2],dice[5],dice[0],dice[3]
+    elif t == 3:
+        dice[0],dice[1],dice[4],dice[5] = dice[4],dice[0],dice[5],dice[1]
+    elif t == 4:
+        dice[0],dice[1],dice[4],dice[5] = dice[1],dice[5],dice[0],dice[4]
+
+    if maps[nr][nc] == 0:
+        maps[nr][nc] = dice[5]
+    else:
+        dice[5] = maps[nr][nc]
+        maps[nr][nc] = 0
+    r, c = nr, nc
+    print(dice[0])
