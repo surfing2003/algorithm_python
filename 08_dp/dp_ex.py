@@ -159,3 +159,30 @@ for i in range(3,n+1):
     d[i] = max(d[i-3]+s[i-1]+s[i], d[i-2]+s[i])
 
 print(d[n])
+
+
+
+# bj 14501
+# dp인데 뒤에서 부터 해온다는 점이 주요 포인트
+N = int(input())
+s = [list(map(int,input().split())) for _ in range(N)]
+
+dp = [0] * (N)
+
+for i in range(N-1,-1,-1):
+    day = s[i][0]
+    pay = s[i][1]
+
+    if day > N - i:
+        if i != N-1:
+            dp[i] = dp[i+1]
+        continue
+
+    if i == N-1:
+        dp[i] = pay
+    elif i + day == N:  
+        dp[i] = max(pay,dp[i+1])
+    else:
+        dp[i] = max(pay+dp[i+day],dp[i+1])
+ 
+print(dp[0])
