@@ -23,7 +23,7 @@
 # l = []
 # for _ in range(n):
 #     l.append(input())
-s
+
 # l.sort(key = lambda x : (len(x),chk(x),x))
 
 
