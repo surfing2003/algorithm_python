@@ -36,3 +36,5 @@ def solution(clothes):
     # reduce 들어오는 순서대로 정해진 함수계산 여기에서는 ((x*y) * y) 이런식
 
 print(solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]]))
+
+

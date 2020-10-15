@@ -312,3 +312,41 @@ for i in range(N):
         if i+1 < N and j+2 < M:
             max_sum = max(max_sum,arr[i][j]+arr[i][j+1]+arr[i][j+2]+arr[i+1][j+2])
 print(max_sum)
+
+
+# bj 14503 로봇청소기
+
+N,M = map(int,input().split())
+x,y,d = map(int,input().split()) 
+
+arr = [list(map(int,input().split())) for _ in range(N)]
+
+dx = [-1, 0, 1, 0]
+dy = [0, 1, 0, -1]
+answer = 0
+cnt = 0
+while True:
+    if cnt == 4:
+        nd = (d+2) % 4
+        nx = x + dx[nd]
+        ny = y + dy[nd]
+        
+        if arr[nx][ny] == 2:
+            x,y,d,cnt = nx,ny,d,0
+        else:
+            break
+
+    if arr[x][y] == 0:
+        answer += 1
+        arr[x][y] = 2
+    
+    nd = (d+3) % 4
+    nx = x + dx[nd]
+    ny = y + dy[nd]
+
+    if arr[nx][ny] == 0:
+        x,y,d,cnt = nx,ny,nd,0
+    else:
+        x,y,d,cnt = x,y,nd,cnt+1
+
+print(answer)
