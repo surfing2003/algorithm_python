@@ -2,57 +2,60 @@
 import sys
 input = lambda : sys.stdin.readline().rstrip()
 
-# 17143 17142 17779 17837 19236 19237 19238
+# 17142 17779 17837 19236 19237 19238
+# 17142 연구소 3 - 틀림
 
-# bj 17143 낚시왕
+from collections import deque
+from itertools import combinations as cb
+import copy
 
-R,C,M = map(int,input().split())
-arr = [[0]*C for _ in range(R)]
-for i in range(M):
-    r,c,s,d,z = map(int,input().split())
-    arr[r-1][c-1] = [s,d,z]
-# (r-1,c-1) 상어위치 // s 속력(), d 이동방향, z 크기
-# 1 위 2 아래 3 오른쪽 4 왼쪽
-# 결과
-score = 0
-
-di = [0,-1,1,0,0]
-dj = [0,0,0,1,-1]
-
-# 낚시왕 이동 
-for t in range(C):
-    # 상어잡기
-    for i in range(R):
-        if arr[i][t] != 0:
-            score += arr[i][t][2]
-            arr[i][t] = 0
-            M -= 1
-            break
+def bfs():
+    temp_arr = copy.deepcopy(arr)
+    while q:
+        x,y,t = q.popleft()
+        for i in range(4):
+            nx = x+dx[i]
+            ny = y+dy[i]
+            if 0 <= nx < N and 0 <= ny < N:
+                if temp_arr[nx][ny] == 0 or temp_arr[nx][ny] == "*":
+                    temp_arr[nx][ny] = t
+                    q.append([nx,ny,t+1])
     
-    # 상어이동
-    temp_arr = [[0]* C for _ in range(R)]
-    for i in range(R):
-        for j in range(C):
-            if arr[i][j] != 0 :
-                x,y,s,d,z = i,j, *arr[i][j]
-                while s > 0:
-                    x += di[d]
-                    y += dj[d]
-                    if 0<= x < R and 0<= y < C:
-                        s-=1
-                    else:
-                        x -= di[d]
-                        y -= dj[d]
-                        if d == 1: d =2
-                        elif d == 2: d =1
-                        elif d == 3: d =4
-                        elif d == 4: d =3
-                
-                if temp_arr[x][y] == 0:
-                    temp_arr[x][y] = [arr[i][j][0],d,z]
-                else:
-                    if temp_arr[x][y][2] < z:
-                        temp_arr[x][y] = [arr[i][j][0],d,z]
-    arr = temp_arr
+    for i in temp_arr:
+        if 0 in i:
+            return -1
+    return t
 
-print(score)
+
+
+N, V = map(int, input().split())
+arr = [list(map(int,input().split())) for _ in range(N)]
+virus = []
+for i in range(N):
+    for j in range(N):
+        if arr[i][j] == 2:
+            arr[i][j] = "*"
+            virus.append((i,j))
+        if arr[i][j] == 1:
+            arr[i][j] = "-"
+
+dx = [0,1,0,-1]
+dy = [1,0,-1,0]
+answer = []
+pre = [i for i in arr if i.count(1)]
+if not pre:
+    print(0)
+else:
+    chk_list = cb(virus,V)
+    for chk in chk_list:
+        q = deque()
+        for i in range(V):
+            q.append([chk[i][0],chk[i][1],0])
+        ans = bfs()
+        if ans != -1:
+            answer.append(ans)
+
+    if answer:
+        print(min(answer))
+    else:
+        print(-1)
