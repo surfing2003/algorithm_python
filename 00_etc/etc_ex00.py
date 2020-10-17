@@ -136,6 +136,5 @@ def gab(l, idx ,N):
         select[i] = True
         gab(l+1,i,N)
         select[i] = False
-
 gab(0,0,N)
 print(min_a)

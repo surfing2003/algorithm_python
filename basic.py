@@ -229,8 +229,6 @@ for i in range(1,n):
             dp[i] = max(dp[i],dp[j]+1)
 print(n-max(dp))
 
-
-
 # 선형시간에 해결이 되는 것
 # 투포인터 : 리스트에 순차적으로 접근해야 할 때, 
 # 두 개의 점을 이용해 위치를 기록하면서 계산하는 기법?
@@ -260,7 +258,6 @@ print(result)
 
 # 접두사합 
 # M개의 쿼리 정보를 통해 구간에 해당하는 데이터의 합을 구하는 문제 
-
 n = 5
 data = [10, 20, 30, 40, 50]
 
@@ -274,13 +271,9 @@ left = 3
 right = 4
 print(prefix_sum[right]-prefix_sum[left-1])
 
-
-
 # 백트래킹
 # 현재상태에서 가능한 모든 후보군을 따라 들어가며 탐색하는 알고리즘
- 
 # bj 15649 N과 M(1)
-
 N, M = map(int, input().split())
 visited = [False] * N  # 탐사 여부 check
 out = []  # 출력 내용
