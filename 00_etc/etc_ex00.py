@@ -24,7 +24,6 @@ for _ in range(n):
             print(0)
 
 # bj 13458 시험감독
-
 n = int(input())
 a = list(map(int,input().split()))
 b, c = map(int, input().split())

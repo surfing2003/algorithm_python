@@ -486,3 +486,106 @@ for t in range(C):
     arr = temp_arr
 
 print(score)
+
+
+# bj 17837 새로운 게임 
+# 다시 풀어보기
+# 주요포인트 : 위치를 key로 하는 딕셔너리
+#         : 말을 key로 활용해서 따로 관리하는 딕셔너리
+import sys
+input = lambda : sys.stdin.readline().rstrip()
+
+# N * N 
+# K개의 말 
+# 체스판 : 흰 빨 파
+# 이동방향 : 상하좌우
+# 턴 한번 > 1~K까지 순서대로 이동
+# 한 말이 이동할 때 위에 올려져 있는 말도 함께 이동
+# 말이 4개이상 쌓이는 순간 게임 종료
+
+# 맨앞이 가장 바닥 > stack 인듯
+
+# 이동칸이 흰색인 경우
+# 칸에 말이 있는 경우 이동하는 말을 위로 
+# 기존 DE 이동 ABC  이동후 DEABC
+
+# 이동칸이 빨간색인 경우
+# 이동 후 순서 반전
+# ABC > 이동칸에 아무도없으면 CBA
+# ADFG > 이동칸에 ECB이 있으면 ECBGFDA
+
+# 이동칸이 파란색인 경우
+# A번 말의 이동 방향을 반대로하고 한칸 이동
+# 반대로 바꾼후에 이동하려는 칸이 파란색인경우에는 이동하지않고 가만히 있는다.
+# 벽을 벗어나는 경우도 파란색과 같은 경우
+
+#종료조건 턴 > 1000 / 종료되지 않을 경우 -1
+
+
+# 0 오 왼 상 하
+dx=[0,0,0,-1,1]
+dy=[0,1,-1,0,0]
+
+N, K = map(int, input().split())
+
+# 0 흰색 : 단순이동 / 1 빨간 : stack 역순 / 2 파랑 : 벽과같은 역할
+arr = [list(map(int,input().split())) for _ in range(N)]
+
+stone_arr = {(i,j):[] for j in range(N) for i in range(N)}
+stone = {}
+for i in range(K):
+    r,c,d = map(int,input().split())
+    stone_arr[(r-1,c-1)].append(i)
+    stone[i] = [r-1,c-1,d]
+
+def rev_d(d):
+    if d == 1: d = 2
+    elif d == 2: d = 1
+    elif d == 3: d = 4
+    elif d == 4: d = 3
+    return d
+
+def s():
+    turn = 0
+    P = 0
+    while True:
+        turn += 1
+        if turn > 1000: 
+            return -1
+        for number in  range(K):
+            x,y,d = stone[number]
+            nx,ny = x+dx[d],y+dy[d]
+
+            if  not 0 <= nx < N or not 0 <= ny < N or arr[nx][ny] == 2:
+                d = rev_d(d)
+                nx,ny = x+dx[d], y+dy[d]
+                if  not 0 <= nx < N or not 0 <= ny < N or arr[nx][ny] == 2:
+                    stone[number][2] = d
+                    continue
+                P = 1
+            if arr[nx][ny] == 0:
+                left = stone_arr[(x,y)][:stone_arr[(x,y)].index(number)]
+                right = stone_arr[(x,y)][stone_arr[(x,y)].index(number):]            
+                stone_arr[(x,y)] = left
+                stone_arr[(nx,ny)].extend(right)
+                if len(stone_arr[(nx,ny)]) >= 4: 
+                    return turn
+                for i in right:
+                    stone[i][0], stone[i][1] = nx,ny
+                if P == 1: 
+                    stone[number][2] = d
+                P = 0
+            elif arr[nx][ny] ==1:
+                left = stone_arr[(x,y)][:stone_arr[(x,y)].index(number)]
+                right = stone_arr[(x,y)][stone_arr[(x,y)].index(number):]            
+                stone_arr[(x,y)] = left
+                right.reverse()
+                stone_arr[(nx,ny)].extend(right)
+                if len(stone_arr[(nx,ny)]) >= 4: 
+                    return turn
+                for i in right:
+                    stone[i][0], stone[i][1] = nx,ny
+                if P == 1: 
+                    stone[number][2] = d
+                P = 0
+print(s())
