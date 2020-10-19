@@ -137,3 +137,24 @@ def gab(l, idx ,N):
         select[i] = False
 gab(0,0,N)
 print(min_a)
+
+# 프로그래머스 크레인인형뽑기게임
+def solution(board, moves):
+    answer = 0
+    fin = []
+    for move in moves:
+        temp = 0
+        for i in range(len(board)):
+            if board[i][move-1] != 0:
+                temp = board[i][move-1]
+                board[i][move-1] = 0
+                if len(fin)==0:
+                    fin.append(temp)
+                elif len(fin) > 0 and fin[-1] != temp:
+                    fin.append(temp)
+                else :
+                    fin.pop()
+                    answer += 2
+                break
+    return answer
+
