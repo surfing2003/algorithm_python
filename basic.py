@@ -204,6 +204,66 @@ result = b_search(temp,7,0,len(temp)-1)
 result = b_search(temp,2,0,len(temp)-1)
 
 
+# 정렬
+# 선택정렬
+# 기준을 한칸씩 뒤로 옮기며 최소값을 가져오는 방식
+n = 10
+data = [1,8,6,4,2,10,7,5,9,3]
+for i in range(n):
+    min_index = i
+    for j in range(i+1,n):
+        if data[min_index] > data[j]:
+            min_index = j
+    data[i],data[min_index] = data[min_index],data[i]
+
+# 삽입정렬
+# 앞에서부터 한칸씩 기준을 뒤로 미루며, 정렬상태를 유지하는 방식
+# 정렬된 배열에 다음 숫자를 끼워넣는 느낌
+for i in range(1,n):
+    for j in range(i,0,-1):
+        if data[j-1] > data[j]:
+            data[j-1], data[j] = data[j],data[j-1]
+        else:
+            break
+
+# 퀵정렬
+# 분할 정복 방법 
+# 피벗을 고르고, 피벗기준으로 작은요소는 왼쪽, 큰요소는 오른쪽으로 이동
+# 피벗을 제외한 양쪽을 다시 정렬
+# 더이상 분할이 불가능할때까지 분할
+def quick(start,end):
+    if start >= end:
+        return
+    pivot = start
+    left = start + 1
+    right = end
+    while left <= right:
+        while left <= end and data[left] <= data[pivot]:
+            left += 1
+        while right > start and data[right] >= data[pivot]:
+            right -= 1
+        if left > right:
+            data[right], data[pivot] = data[pivot], data[right]
+        else:
+            data[left], data[right] = data[right], data[left]
+        
+    quick(start,right-1)
+    quick(right+1,end)
+    
+quick(0,n-1)
+
+# 계수정렬
+# 해당 숫자의 인덱스에 갯수를 저장하고 이를 출력하는 방식으로 정렬
+count = [0] * (max(data)+1)
+for i in data:
+    count[i] += 1
+
+print("정렬후")
+for i in range(len(count)):
+    for j in range(count[i]):
+        print(i, end = " ")
+
+
 #  정렬되었는지 확인하는 방법
 import sys
 input = lambda: sys.stdin.readline().rstrip()
@@ -291,3 +351,4 @@ def solve(depth, N, M):
             out.pop()  # 탐사 내용 제거
 
 solve(0, N, M)
+
