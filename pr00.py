@@ -96,39 +96,108 @@ input = lambda : sys.stdin.readline().rstrip()
 # 벨만포드  - 매번 모든 간선을 전부 확인
 #         - 따라서 다익스트라 알고리즘에서의 최적의 해를 항상 포함
 #         - 다익스트라에 비해 시간은 오래걸리지만, 음수간선 순환을 탐지할 수 있음
-# pypy3 제출
-INF = int(1e9)
+# bj 11657 - pypy3
+# INF = int(1e9)
 
-def bf(start):
-    dist[start] = 0
-    for i in range(n):
-        for j in range(m):
-            cur = edges[j][0]
-            next_node = edges[j][1]
-            cost = edges[j][2]
+# def bf(start):
+#     dist[start] = 0
+#     for i in range(n):
+#         for j in range(m):
+#             cur = edges[j][0]
+#             next_node = edges[j][1]
+#             cost = edges[j][2]
 
-            if dist[cur] != INF and dist[next_node] > dist[cur]+cost:
-                dist[next_node] = dist[cur] + cost
-                if i == n-1:
-                    return True
-    return False
+#             if dist[cur] != INF and dist[next_node] > dist[cur]+cost:
+#                 dist[next_node] = dist[cur] + cost
+#                 if i == n-1:
+#                     return True
+#     return False
 
 
-n, m = map(int, input().split())
-edges = []
-dist = [INF] * (n+1)
+# n, m = map(int, input().split())
+# edges = []
+# dist = [INF] * (n+1)
 
-for _ in range(m):
-    a,b,c = map(int,input().split())
-    edges.append((a,b,c))
+# for _ in range(m):
+#     a,b,c = map(int,input().split())
+#     edges.append((a,b,c))
 
-negative_cycle = bf(1)
+# negative_cycle = bf(1)
 
-if negative_cycle:
-    print("-1")
-else:
-    for i in range(2,n+1):
-        if dist[i] == INF:
-            print("-1")
-        else:
-            print(dist[i])
+# if negative_cycle:
+#     print("-1")
+# else:
+#     for i in range(2,n+1):
+#         if dist[i] == INF:
+#             print("-1")
+#         else:
+#             print(dist[i])
+
+
+# def div(money):
+#     answer = int(1e9)
+#     total = sum([i*c for i,c in money])
+#     money.sort()
+#     dp=[[0 for j in range(total+1)] for i in range(len(money))]
+#     for i in range(len(money)):
+#         dp[i][0]=1
+
+#     for i in range(len(money)):
+#         for num in range(money[i][1]+1):
+#             for j in range(total+1):
+#                 temp = j+num * money[i][0]
+#                 if temp == 0:
+#                     continue
+#                 if temp < total+1:
+#                     dp[i][temp] += dp[i-1][j]
+#                 else:
+#                     break
+#     print(dp)
+#     return 0
+
+
+
+# print(div([[100,3],[200,1],[500,2]]))
+
+
+# 
+
+import sys
+input = lambda : sys.stdin.readline().rstrip()
+
+
+N = int(input())
+
+a = list(map(int,input().split()))
+
+move = 0
+now = 0
+answer = []
+for _ in range(N):
+    if a[0] != 0:
+        move = a[0]
+        a[0] = 0
+        answer.append(1)
+        continue
+
+    if move > 0:
+        while move > 0:
+            now = (now+1) % N
+            if a[now] != 0:
+                move -= 1
+            else:
+                continue
+        move = a[now]
+        a[now] = 0
+    
+    else :
+        while move < 0:
+            now = (now-1) % N
+            if a[now] != 0:
+                move += 1
+            else:
+                continue
+        move = a[now]
+        a[now] = 0
+    answer.append(now+1)
+print(answer)
