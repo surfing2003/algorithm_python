@@ -162,42 +162,45 @@ input = lambda : sys.stdin.readline().rstrip()
 
 # 
 
-import sys
-input = lambda : sys.stdin.readline().rstrip()
+# import sys
+# input = lambda : sys.stdin.readline().rstrip()
 
 
-N = int(input())
+# N = int(input())
 
-a = list(map(int,input().split()))
+# a = list(map(int,input().split()))
 
-move = 0
-now = 0
-answer = []
-for _ in range(N):
-    if a[0] != 0:
-        move = a[0]
-        a[0] = 0
-        answer.append(1)
-        continue
+# move = 0
+# now = 0
+# answer = []
+# for _ in range(N):
+#     if a[0] != 0:
+#         move = a[0]
+#         a[0] = 0
+#         answer.append(1)
+#         continue
 
-    if move > 0:
-        while move > 0:
-            now = (now+1) % N
-            if a[now] != 0:
-                move -= 1
-            else:
-                continue
-        move = a[now]
-        a[now] = 0
+#     if move > 0:
+#         while move > 0:
+#             now = (now+1) % N
+#             if a[now] != 0:
+#                 move -= 1
+#             else:
+#                 continue
+#         move = a[now]
+#         a[now] = 0
     
-    else :
-        while move < 0:
-            now = (now-1) % N
-            if a[now] != 0:
-                move += 1
-            else:
-                continue
-        move = a[now]
-        a[now] = 0
-    answer.append(now+1)
-print(answer)
+#     else :
+#         while move < 0:
+#             now = (now-1) % N
+#             if a[now] != 0:
+#                 move += 1
+#             else:
+#                 continue
+#         move = a[now]
+#         a[now] = 0
+#     answer.append(now+1)
+# print(answer)
+
+
+# 
