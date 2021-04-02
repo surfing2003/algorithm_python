@@ -191,14 +191,79 @@ input = lambda : sys.stdin.readline().rstrip()
     
 # print(max([int(i[::-1] for i in input().split())]))
 
-N = input()
-a = ['ABC','DEF','GHI',"JKL","MNO","PQRS","TUV","WXYZ"]
-answer = 0
+# N = input()
+# a = ['ABC','DEF','GHI',"JKL","MNO","PQRS","TUV","WXYZ"]
+# answer = 0
 
-for i in N:
-    for j in a:
-        if i in j:
-            answer += a.index(j) + 3
-print(answer)
+# for i in N:
+#     for j in a:
+#         if i in j:
+#             answer += a.index(j) + 3
+# print(answer)
 
-print(sum((ord(i)-62-(i in 'SVYZ')-(i=='Z'))//3+2 for i in input()))
+# print(sum((ord(i)-62-(i in 'SVYZ')-(i=='Z'))//3+2 for i in input()))
+
+# N = input()
+# change_list = ["c=","c-","dz=","d-","lj","nj","s=","z=","dz="]
+
+# for i in change_list:
+#     N=N.replace(i,"*")
+# print(len(N))
+
+# A, B, C = map(int, input().split())
+
+# if C-B <= 0:
+#     print(-1)
+# else:
+#     print(A//(C-B) + 1)
+
+# N = int(input())
+# now = 1
+# plus = 6
+# result = 1
+# if N == 1:
+#     print(result)
+# else:
+#     while True:
+#         now += plus
+#         result += 1
+#         if N <= now:
+#             print(result)
+#             break
+#         plus += 6
+
+# N = int(input())
+# now = 1
+
+# while N>now:
+#     N -= now
+#     now += 1
+
+# if now % 2 == 0:
+#     a = N
+#     b = now - N + 1
+# else:
+#     a = now - N + 1
+#     b = N
+# print(a,"/",b,sep="")
+
+# A,B,C = map(int,input().split())
+
+# def solution(A,B,C):
+#     if B == 1:
+#         return A % C
+#     else:
+#         temp = solution(A,B//2,C)
+#         if B % 2 == 0:
+#             return temp * temp % C
+#         else :
+#             return temp * temp * A % C
+
+# print(solution(A,B,C))
+# print(pow(A,B,C))
+
+# T = int(input())
+# for _ in range(T):
+#     n = int(input())
+#     print(pow(2,max(0,n-2),10**9+7))
+
