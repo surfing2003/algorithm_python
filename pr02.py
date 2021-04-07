@@ -267,3 +267,31 @@ input = lambda : sys.stdin.readline().rstrip()
 #     n = int(input())
 #     print(pow(2,max(0,n-2),10**9+7))
 
+# N, K = map(int, input().split())
+
+# now = [i+1 for i in range(N)]
+# result = []
+# idx = 0
+# while now:
+#     idx = (idx+K-1) % len(now)
+#     temp = now.pop(idx)
+#     result.append(str(temp))
+
+# print("<%s>"%(", ".join(result)))
+
+#
+N = int(input())
+idx_list = list(map(int,input().split()))
+balloons = [i+1 for i in range(N)]
+
+idx = 0
+K = idx_list.pop(0)
+print(balloons.pop(0),end = ' ')
+while balloons:
+    if K >0 :
+      idx = (idx+K-1) % len(balloons)
+    else :
+        idx = (idx+len(balloons)+K) % len(balloons)
+    K = idx_list.pop(idx)
+    print(balloons.pop(idx), end =' ')
+    
