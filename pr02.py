@@ -280,18 +280,74 @@ input = lambda : sys.stdin.readline().rstrip()
 # print("<%s>"%(", ".join(result)))
 
 #
-N = int(input())
-idx_list = list(map(int,input().split()))
-balloons = [i+1 for i in range(N)]
+# N = int(input())
+# idx_list = list(map(int,input().split()))
+# balloons = [i+1 for i in range(N)]
 
-idx = 0
-K = idx_list.pop(0)
-print(balloons.pop(0),end = ' ')
-while balloons:
-    if K >0 :
-      idx = (idx+K-1) % len(balloons)
-    else :
-        idx = (idx+len(balloons)+K) % len(balloons)
-    K = idx_list.pop(idx)
-    print(balloons.pop(idx), end =' ')
-    
+# idx = 0
+# K = idx_list.pop(0)
+# print(balloons.pop(0),end = ' ')
+# while balloons:
+#     if K >0 :
+#       idx = (idx+K-1) % len(balloons)
+#     else :
+#         idx = (idx+len(balloons)+K) % len(balloons)
+#     K = idx_list.pop(idx)
+#     print(balloons.pop(idx), end =' ')
+
+
+# N = int(input())
+
+# def fact(N):
+#     if N == 0 or N == 1:
+#         return 1
+#     else:
+#         return fact(N-1)*N
+
+# print(fact(N))
+
+
+# N = int(input())
+
+# def fib(N):
+#     if N==0:
+#         return 0
+#     if N==1:
+#         return 1
+#     else:
+#         return fib(N-1)+fib(N-2)
+
+# print(fib(N))
+
+# 별찍기 10 
+N = int(input())
+stars = [[' ' for _ in range(N)] for _ in range(N)]
+
+def fill_star(size,x,y):
+    if size == 1:
+        stars[y][x] = '*'
+    else:
+        next = size//3
+        for dx in range(3):
+            for dy in range(3):
+                if dx != 1 or dy != 1:
+                    fill_star(next,x+dx*next,y+dy*next)
+fill_star(N,0,0)
+for k in stars:
+    print(''.join(k))
+#
+def concat(r1, r2):
+    return [''.join(x) for x in zip(r1, r2, r1)]
+
+def stars(n):
+    if n == 1:
+        return ['*']
+    n //= 3
+    x = stars(n)
+    t = concat(x, x)
+    m = concat(x, [' '*n]*n)
+    return t + m + t
+
+
+n = int(input())
+print('\n'.join(stars(n)))
