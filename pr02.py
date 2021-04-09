@@ -320,34 +320,70 @@ input = lambda : sys.stdin.readline().rstrip()
 # print(fib(N))
 
 # 별찍기 10 
+# N = int(input())
+# stars = [[' ' for _ in range(N)] for _ in range(N)]
+
+# def fill_star(size,x,y):
+#     if size == 1:
+#         stars[y][x] = '*'
+#     else:
+#         next = size//3
+#         for dx in range(3):
+#             for dy in range(3):
+#                 if dx != 1 or dy != 1:
+#                     fill_star(next,x+dx*next,y+dy*next)
+# fill_star(N,0,0)
+# for k in stars:
+#     print(''.join(k))
+# #
+# def concat(r1, r2):
+#     return [''.join(x) for x in zip(r1, r2, r1)]
+
+# def stars(n):
+#     if n == 1:
+#         return ['*']
+#     n //= 3
+#     x = stars(n)
+#     t = concat(x, x)
+#     m = concat(x, [' '*n]*n)
+#     return t + m + t
+
+
+# n = int(input())
+# print('\n'.join(stars(n)))
+
+# from itertools import combinations
+
+# N, M = map(int, input().split())
+# cards = list(map(int,input().split()))
+# answer = 0
+
+# for temp in list(combinations(cards,3)):
+#     card_sum = sum(temp)
+#     if card_sum <= M:
+#         answer = max(answer,card_sum)
+# print(answer)
+
 N = int(input())
-stars = [[' ' for _ in range(N)] for _ in range(N)]
+c = 1
+while True:
+    temp = c
+    for i in str(temp):
+        temp += int(i)
+    if c == N:
+        print(0)
+        break
+    elif temp == N:
+        print(c)
+        break
+    c += 1
 
-def fill_star(size,x,y):
-    if size == 1:
-        stars[y][x] = '*'
-    else:
-        next = size//3
-        for dx in range(3):
-            for dy in range(3):
-                if dx != 1 or dy != 1:
-                    fill_star(next,x+dx*next,y+dy*next)
-fill_star(N,0,0)
-for k in stars:
-    print(''.join(k))
-#
-def concat(r1, r2):
-    return [''.join(x) for x in zip(r1, r2, r1)]
-
-def stars(n):
-    if n == 1:
-        return ['*']
-    n //= 3
-    x = stars(n)
-    t = concat(x, x)
-    m = concat(x, [' '*n]*n)
-    return t + m + t
-
-
-n = int(input())
-print('\n'.join(stars(n)))
+N = int(input())
+for i in range(1,N+1):
+    temp = i + sum(list(map(int,str(i))))
+    if temp == N:
+        print(i)
+        break
+    if i == N:
+        print(0)
+        break
