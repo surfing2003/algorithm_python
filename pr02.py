@@ -364,26 +364,40 @@ input = lambda : sys.stdin.readline().rstrip()
 #         answer = max(answer,card_sum)
 # print(answer)
 
-N = int(input())
-c = 1
-while True:
-    temp = c
-    for i in str(temp):
-        temp += int(i)
-    if c == N:
-        print(0)
-        break
-    elif temp == N:
-        print(c)
-        break
-    c += 1
+# N = int(input())
+# c = 1
+# while True:
+#     temp = c
+#     for i in str(temp):
+#         temp += int(i)
+#     if c == N:
+#         print(0)
+#         break
+#     elif temp == N:
+#         print(c)
+#         break
+#     c += 1
+
+# N = int(input())
+# for i in range(1,N+1):
+#     temp = i + sum(list(map(int,str(i))))
+#     if temp == N:
+#         print(i)
+#         break
+#     if i == N:
+#         print(0)
+#         break
+
 
 N = int(input())
-for i in range(1,N+1):
-    temp = i + sum(list(map(int,str(i))))
-    if temp == N:
-        print(i)
-        break
-    if i == N:
-        print(0)
-        break
+people = [list(map(int,input().split())) for _ in range(N)]
+answer = []
+for i in range(N):
+    rank = 1
+    for j in range(N):
+        if i == j:
+            continue
+        if people[i][0] < people[j][0] and people[i][1] < people[j][1]:
+            rank += 1
+    answer.append(str(rank))
+print(' '.join(answer)) 
