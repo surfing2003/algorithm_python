@@ -389,15 +389,25 @@ input = lambda : sys.stdin.readline().rstrip()
 #         break
 
 
+# N = int(input())
+# people = [list(map(int,input().split())) for _ in range(N)]
+# answer = []
+# for i in range(N):
+#     rank = 1
+#     for j in range(N):
+#         if i == j:
+#             continue
+#         if people[i][0] < people[j][0] and people[i][1] < people[j][1]:
+#             rank += 1
+#     answer.append(str(rank))
+# print(' '.join(answer)) 
+
 N = int(input())
-people = [list(map(int,input().split())) for _ in range(N)]
-answer = []
-for i in range(N):
-    rank = 1
-    for j in range(N):
-        if i == j:
-            continue
-        if people[i][0] < people[j][0] and people[i][1] < people[j][1]:
-            rank += 1
-    answer.append(str(rank))
-print(' '.join(answer)) 
+name = 665
+
+while N:
+    name += 1
+    if "666" in str(name):
+        N -= 1
+
+print(name)
