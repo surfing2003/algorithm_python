@@ -402,12 +402,27 @@ input = lambda : sys.stdin.readline().rstrip()
 #     answer.append(str(rank))
 # print(' '.join(answer)) 
 
+# N = int(input())
+# name = 665
+
+# while N:
+#     name += 1
+#     if "666" in str(name):
+#         N -= 1
+
+# print(name)
+
+import sys
+input = lambda : sys.stdin.readline().rstrip()
+
 N = int(input())
-name = 665
+temp = [0] * 10001
 
-while N:
-    name += 1
-    if "666" in str(name):
-        N -= 1
+for _ in range(N):
+    temp[int(input())] += 1
+    
+for i in range(1,10001):
+    if temp[i] != 0:
+        for _ in range(temp[i]):
+            print(i)
 
-print(name)
