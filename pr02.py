@@ -412,19 +412,51 @@ input = lambda : sys.stdin.readline().rstrip()
 
 # print(name)
 
-import sys
-input = lambda : sys.stdin.readline().rstrip()
+# import sys
+# input = lambda : sys.stdin.readline().rstrip()
 
-N = int(input())
-temp = [0] * 10001
+# N = int(input())
+# temp = [0] * 10001
 
-for _ in range(N):
-    temp[int(input())] += 1
+# for _ in range(N):
+#     temp[int(input())] += 1
+
+# # for i in range(1,10001):
+# #     if temp[i] != 0:
+# #         for _ in range(temp[i]):
+# #             print(i)
 
 # for i in range(1,10001):
-#     if temp[i] != 0:
-#         for _ in range(temp[i]):
-#             print(i)
+#     print(f'{i}\n' * temp[i], end='')
 
-for i in range(1,10001):
-    print(f'{i}\n' * temp[i], end='')
+
+# def smallestSubsequence(self, s: str) -> str:
+#         s_dict = {}
+#         for i,k in enumerate(s):
+#             if k not in s_dict.keys():
+#                 s_dict[k] = [i]
+#             else:
+#                 s_dict[k].append(i)
+        
+#         s_dict = sorted(s_dict.keys())
+#         print(s_dict)
+
+def smallestSubsequence( s:str):
+    s_dict = {}
+    stack=[]
+    last = {}
+
+    for i in range(len(s)):
+        last[s[i]]=i
+    print(last)
+    for i,ch in enumerate(s):
+        if(ch in stack):
+            continue
+        while(stack and stack[-1]>ch and i<last[stack[-1]]):
+            print(stack)
+            stack.pop()
+        stack.append(ch)
+        print("s:",stack)
+    return ''.join(stack)
+
+smallestSubsequence(s="cbacdcbc")
