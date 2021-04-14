@@ -441,22 +441,158 @@ input = lambda : sys.stdin.readline().rstrip()
 #         s_dict = sorted(s_dict.keys())
 #         print(s_dict)
 
-def smallestSubsequence( s:str):
-    s_dict = {}
-    stack=[]
-    last = {}
+# def smallestSubsequence( s:str):
+#     s_dict = {}
+#     stack=[]
+#     last = {}
 
-    for i in range(len(s)):
-        last[s[i]]=i
-    print(last)
-    for i,ch in enumerate(s):
-        if(ch in stack):
-            continue
-        while(stack and stack[-1]>ch and i<last[stack[-1]]):
-            print(stack)
-            stack.pop()
-        stack.append(ch)
-        print("s:",stack)
-    return ''.join(stack)
+#     for i in range(len(s)):
+#         last[s[i]]=i
+#     print(last)
+#     for i,ch in enumerate(s):
+#         if(ch in stack):
+#             continue
+#         while(stack and stack[-1]>ch and i<last[stack[-1]]):
+#             print(stack)
+#             stack.pop()
+#         stack.append(ch)
+#         print("s:",stack)
+#     return ''.join(stack)
 
-smallestSubsequence(s="cbacdcbc")
+# smallestSubsequence(s="cbacdcbc")
+
+
+
+# 유클리드 호제법
+# A,B(A>B)의 최대공약수는  B와 R(A를 B로나눈 나머지)의 최대공약수와 같다.
+
+# gcd(192,162)
+
+# def gdc(a, b):
+#     if a%b == 0:
+#         return b
+#     else :
+#         return gdc(b, a%b)
+
+# print(gdc(192,162))
+
+# # dfs
+# def dfs(graph, v, visited):
+#     visited[v] = True
+#     print(v, end = ' ')
+#     for i in graph[v]:
+#         if not visited[i]:
+#             dfs(graph, i, visited)
+
+# graph = [
+#     [],
+#     [2,3,8],
+#     [1,7],
+#     [1,4,5],
+#     [3,5],
+#     [3,4],
+#     [7],
+#     [2,6,8],
+#     [1,7]
+# ]
+# visited = [False] * 9
+# dfs(graph,1,visited)
+# print()
+
+# # bfs
+# from collections import deque
+
+# def bfs(graph, start, visited):
+#     q = deque([start])
+#     visited[start] = True
+
+#     while q:
+#         v = q.popleft()
+#         print(v, end = ' ')
+#         for i in graph[v]:
+#             if not visited[i]:
+#                 q.append(i)
+#                 visited[i] = True
+
+# graph = [
+#     [],
+#     [2,3,8],
+#     [1,7],
+#     [1,4,5],
+#     [3,5],
+#     [3,4],
+#     [7],
+#     [2,6,8],
+#     [1,7]
+# ]
+# visited = [False] * 9
+# bfs(graph,1,visited)
+
+# def dfs(x,y):
+#     if x <= -1 or x >= N or y <= -1 or y >= M:
+#         return False
+#     if maps[x][y] == 0:
+#         # 해당 시작점 방문 적용
+#         maps[x][y] = 1
+#         # 연결된 부분 방문 적용
+#         dfs(x-1,y)
+#         dfs(x,y-1)
+#         dfs(x+1,y)
+#         dfs(x,y+1)
+#         # 실제로 사용하는 리턴값
+#         return True
+
+#     return False
+
+# N,M = map(int, input().split())
+
+# maps = [list(map(int,input())) for _ in range(N)]
+
+# result = 0
+# for i in range(N):
+#     for j in range(M):
+#         if dfs(i,j):
+#             result += 1
+# print(result)
+# 4 5
+# 00110
+# 00011
+# 11111
+# 00000
+# 3
+# from collections import deque
+
+# def bfs(x,y):
+#     q = deque()
+#     q.append((x,y))
+
+#     while q:
+#         x,y = q.popleft()
+
+#         for i in range(4):
+#             nx = x + dx[i]
+#             ny = y + dy[i]
+
+#             if nx < 0 or nx >= N or ny < 0 or ny >= M:
+#                 continue
+#             if maps[nx][ny] == 0:
+#                 continue
+#             if maps[nx][ny] == 1:
+#                 maps[nx][ny] = maps[x][y] + 1
+#                 q.append((nx,ny))
+#     return maps[N-1][M-1]
+
+# N, M = map(int,input().split())
+# maps = [list(map(int,input())) for _ in range(N)]
+# dx = [-1,1,0,0]
+# dy = [0,0,-1,1]
+
+# print(bfs(0,0))
+
+# 5 6
+# 101010
+# 111111
+# 000001
+# 111111
+# 111111
+# 10
