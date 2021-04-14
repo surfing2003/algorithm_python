@@ -742,42 +742,50 @@ from bisect import bisect_left,bisect_right
 
 # 파라메트릭 서치
 
-def binary_search(target,start,end):
-    while start <= end:
-        mid = (start+end)//2
-        div = 0
-        for i in dduk:
-            if i > mid:
-                div += i-mid
+# def binary_search(target,start,end):
+#     while start <= end:
+#         mid = (start+end)//2
+#         div = 0
+#         for i in dduk:
+#             if i > mid:
+#                 div += i-mid
         
-        if div == target:
-            return mid
-        elif div > target:
-            start = mid + 1 
-        else:
-            end = mid -1
-    return None
-N, M = map(int,input().split())
-dduk = list(map(int,input().split()))
-print(binary_search(M,0,max(dduk)))
+#         if div == target:
+#             return mid
+#         elif div > target:
+#             start = mid + 1 
+#         else:
+#             end = mid -1
+#     return None
+# N, M = map(int,input().split())
+# dduk = list(map(int,input().split()))
+# print(binary_search(M,0,max(dduk)))
 
-N, M = map(int,input().split())
-array = list(map(int,input().split()))
+# N, M = map(int,input().split())
+# array = list(map(int,input().split()))
 
-start = 0
-end = max(array)
+# start = 0
+# end = max(array)
 
-result = 0
-while (start <= end):
-    total = 0
-    mid = (start+end)//2
-    for x in array:
-        if x > mid:
-            total += x-mid
-    if total < M:
-        end = mid -1
-    else:
-        result = mid ## 중간에 길이를 저장해두어야함.
-        start = mid +1
+# result = 0
+# while (start <= end):
+#     total = 0
+#     mid = (start+end)//2
+#     for x in array:
+#         if x > mid:
+#             total += x-mid
+#     if total < M:
+#         end = mid -1
+#     else:
+#         result = mid ## 중간에 길이를 저장해두어야함.
+#         start = mid +1
 
-print(result)
+# print(result)
+
+# from bisect import bisect_left, bisect_right
+
+# N, X = map(int,input().split())
+# array = list(map(int,input().split()))
+
+
+# print(bisect_right(array,X) - bisect_left(array,X))
