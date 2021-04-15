@@ -881,15 +881,17 @@ input = lambda : sys.stdin.readline().rstrip()
 #     print(result)
 
 #LIS
-N = int(input())
-array = list(map(int,input().split()))
-array.reverse()
+# N = int(input())
+# array = list(map(int,input().split()))
+# array.reverse()
 
-dp = [1]*N
+# dp = [1]*N
 
-for i in range(1,N):
-    for j in range(0,i):
-        if array[j] < array[i]:
-            dp[i] = max(dp[i],dp[j]+1)
+# for i in range(1,N):
+#     for j in range(0,i):
+#         if array[j] < array[i]:
+#             dp[i] = max(dp[i],dp[j]+1)
     
-print(N - max(dp))
+# print(N - max(dp))
+
+
