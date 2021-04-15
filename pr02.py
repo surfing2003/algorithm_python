@@ -815,11 +815,41 @@ input = lambda : sys.stdin.readline().rstrip()
 
 # print(d[n])
 
-N = int(input())
-store = list(map(int,input().split()))
-ant = [0]*N
-ant[0] = store[0]
-ant[1] = max(store[0],store[1])
-for i in range(2,N):
-    ant[i] = max(store[i] + ant[i-2],ant[i-1])
-print(ant[N-1])
+# N = int(input())
+# store = list(map(int,input().split()))
+# ant = [0]*N
+# ant[0] = store[0]
+# ant[1] = max(store[0],store[1])
+# for i in range(2,N):
+#     ant[i] = max(store[i] + ant[i-2],ant[i-1])
+# print(ant[N-1])
+
+# N = int(input())
+
+# d = [0] * 30001
+
+# for i in range(2,N+1):
+#     d[i] = d[i-1]+1
+#     if i % 2 == 0:
+#         d[i] = min(d[i],d[i//2]+1)
+#     if i % 3 == 0:
+#         d[i] = min(d[i],d[i//3]+1)
+#     if i % 5 == 0:
+#         d[i] = min(d[i],d[i//5]+1)
+# print(d[N])
+
+# N,M = map(int,input().split())
+# coins = [int(input()) for _ in range(N)]
+
+# d = [10001]* (M+1)
+
+# d[0] = 0
+# for i in range(N):
+#     for j in range(coins[i],M+1):
+#         if d[j - coins[i]] != 10001:
+#             d[j] = min(d[j],d[j-coins[i]]+1)
+
+# if d[M] == 10001:
+#     print(-1)
+# else:
+#     print(d[M])
