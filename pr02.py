@@ -729,7 +729,7 @@ input = lambda : sys.stdin.readline().rstrip()
 
 
 # 파이썬 이진탐색 라이브러리 
-from bisect import bisect_left,bisect_right
+# from bisect import bisect_left,bisect_right
 
 # bisect_left : 정렬된순서를 유지하면서 배열 a에 x를 삽일할 가장 왼쪽 인덱스를 반환
 # bisect_right: 정렬된 순서를 유지하면서 배열 a에 x를 삽입할 가장 오른쪽 인덱스를 반환
@@ -789,3 +789,37 @@ from bisect import bisect_left,bisect_right
 
 
 # print(bisect_right(array,X) - bisect_left(array,X))
+
+# 피보나치 동적
+# O(N)
+# d = [0] * 100
+
+# def fibo(x):
+#     if x == 1 or x == 2:
+#         return 1
+#     if d[x] != 0:
+#         return d[x]
+#     d[x] = fibo(x-1)+fibo(x-2)
+#     return d[x]
+
+# print(fibo(99))
+
+# d = [0] *100
+
+# d[1] = 1
+# d[2] = 1
+# n = 99
+
+# for i in range(3,n+1):
+#     d[i] = d[i-1]+d[i-2]
+
+# print(d[n])
+
+N = int(input())
+store = list(map(int,input().split()))
+ant = [0]*N
+ant[0] = store[0]
+ant[1] = max(store[0],store[1])
+for i in range(2,N):
+    ant[i] = max(store[i] + ant[i-2],ant[i-1])
+print(ant[N-1])
