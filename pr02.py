@@ -1127,3 +1127,113 @@ input = lambda : sys.stdin.readline().rstrip()
 #     print("-1")
 # else:
 #     print(dist)
+
+# # 서로소 집합
+# # 편향된 상태에서는 효율적이지 않기때문에 아래처럼 parent를 갱신하는 방식을 활용
+# def find_parent(parent,x):
+#     if parent[x] != x:
+#         return find_parent(parent,parent[x])
+#     return x
+
+# # 부모노드가 루트노드가 되도록 parent를 변경
+# def find_parent(parent,x):
+#     if parent[x] != x:
+#         parent[x] = find_parent(parent,parent[x])
+#     return parent[x]
+
+
+# def union_parent(parent,a,b):
+#     a = find_parent(parent, a)
+#     b = find_parent(parent, b)
+#     if a < b:
+#         parent[b] = a
+#     else:
+#         parent[a] = b
+
+
+# v, e = map(int,input().split())
+# parent = [0] * (v+1)
+# for i in range(1,v+1):
+#     parent[i] = i
+
+# for i in range(e):
+#     a, b = map(int,input().split())
+#     union_parent(parent, a, b)
+
+# for i in range(1,v+1):
+#     print(find_parent(parent,i),end = ' ')
+# print()
+# for i in range(1,v+1):
+#     print(parent[i], end = " ")
+# print()
+
+# 서로소 집할을 활용한 무방향그래프에서 사이클 판별
+# 방향의 경우는 dfs를 활용
+# def find_parent(parent,x):
+#     if parent[x] != x:
+#         parent[x] = find_parent(parent,parent[x])
+#     return parent[x]
+
+# def union_parent(parent,a,b):
+#     a = find_parent(parent, a)
+#     b = find_parent(parent, b)
+#     if a < b:
+#         parent[b] = a
+#     else:
+#         parent[a] = b
+
+# v, e = map(int,input().split())
+# parent = [0] * (v+1)
+
+# for i in range(1,v+1):
+#     parent[i] = i
+
+# cycle = False
+
+# for i in range(e):
+#     a, b = map(int,input().split())
+#     if find_parent(parent,a) == find_parent(parent,b):
+#         cycle = True
+#         break
+#     else:
+#         union_parent(parent,a,b)
+
+# print(cycle)
+
+# 신장트리 
+# 그래프에서 모든 노드를 포함하면서 사이클이 존재하지 않는 부분 그래프
+# 최소신장트리 - 크루스칼 알고리즘 O(ElogE)
+def find_parent(parent,x):
+    if parent[x] != x:
+        parent[x] = find_parent(parent,parent[x])
+    return parent[x]
+
+def union_parent(parent,a,b):
+    a = find_parent(parent, a)
+    b = find_parent(parent, b)
+    if a < b:
+        parent[b] = a
+    else:
+        parent[a] = b
+
+v, e = map(int,input().split())
+parent = [0] * (v+1)
+edges = []
+result = 0
+
+for i in range(1,v+1):
+    parent[i] = i
+
+for _ in range(e):
+    a, b, cost = map(int, input().split())
+    edges.append((cost,a,b))
+
+edges.sort()
+
+for edge in edges:
+    cost, a, b = edge
+    if find_parent(parent,a) != find_parent(parent,b):
+        union_parent(parent,a,b)
+        result += cost
+print(result)
+
