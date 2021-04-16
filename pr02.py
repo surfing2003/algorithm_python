@@ -951,3 +951,87 @@ input = lambda : sys.stdin.readline().rstrip()
 #         print("INF")
 #     else:
 #         print(distance[i])
+
+# 우선순위큐
+# 가장 우선순위가 높은 데이터 순서대로 추출 > 힙활용
+# 최소힙 낮은데이터부터 최대힙 높은데이터 
+# 리스트 삽입 O(1), 삭제 O(N)
+# 힙    삽입 O(logN), 삭제 O(logN)
+# 파이썬 기본 최대힙 
+# import heapq
+# # 오름차순(최소힙)
+# def heapsort1(iterable):
+#     h = []
+#     result = []
+
+#     for value in iterable:
+#         heapq.heappush(h,value)
+    
+#     for i in range(len(h)):
+#         result.append(heapq.heappop(h))
+    
+#     return result
+# # 내림차순(최대힙)
+# def heapsort2(iterable):
+#     h = []
+#     result = []
+
+#     for value in iterable:
+#         heapq.heappush(h,-value)
+    
+#     for i in range(len(h)):
+#         result.append(-heapq.heappop(h))
+    
+#     return result
+
+# result = (heapsort1([1,3,5,7,9,2,4,6,8,0]))
+# print(result)
+# result = (heapsort2([1,3,5,7,9,2,4,6,8,0]))
+# print(result)
+
+# # 다익스트라 힙 활용
+# # O(ElogV)
+
+# import heapq
+# import sys
+# input = sys.stdin.readline
+# INF = int(1e9)
+
+# n,m = map(int,input().split())
+# start = int(input())
+# graph = [[] for _ in range(n+1)]
+
+# distance = [INF] *(n+1)
+
+# for _ in range(m):
+#     a,b,c = map(int,input().split())
+#     graph[a].append((b,c))
+
+# def dijkstra(start):
+#     q = []
+#     heapq.heappush(q,(0,start))
+#     distance[start] = 0
+
+#     while q:
+#         dist, now = heapq.heappop(q)
+#         if distance[now] < dist:
+#             continue
+        
+#         for i in graph[now]:
+#             cost = dist + i[1]
+#             if cost < distance[i[0]]:
+#                 distance[i[0]] = cost
+#                 heapq.heappush(q,(cost,i[0]))
+
+# dijkstra(start)
+# for i in range(1,n+1):
+#     if distance[i] == INF:
+#         print("INF")
+#     else:
+#         print(distance[i])
+
+
+# 플로이드 워셜 알고리즘
+# O(N^3)
+# 노드가 적을때는 효과적이지만 노드가 많으면 다익스트라를 활용
+# D_ab = min(D_ab, D_ak + D_kb)
