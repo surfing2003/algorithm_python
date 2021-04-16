@@ -1035,3 +1035,30 @@ input = lambda : sys.stdin.readline().rstrip()
 # O(N^3)
 # 노드가 적을때는 효과적이지만 노드가 많으면 다익스트라를 활용
 # D_ab = min(D_ab, D_ak + D_kb)
+
+# INF = int(1e9)
+# n = int(input()) # 노드?
+# m = int(input()) # 간선?
+
+# graph = [[INF] * (n+1) for _ in range(n+1)]
+
+# for a in range(1,n+1):
+#     graph[a][a] = 0
+
+# for  _ in range(m):
+#     a, b, c = map(int,input().split())
+#     graph[a][b] = c
+
+# for k in range(1,n+1):
+#     for a in range(1,n+1):
+#         for b in range(1,n+1):
+#             graph[a][b] = min(graph[a][b], graph[a][k]+graph[k][b])
+
+# for a in range(1,n+1):
+#     for b in range(1,n+1):
+#         if graph[a][b] == INF:
+#             print("INF",end = " ")
+#         else:
+#             print(graph[a][b], end = " ")
+#     print()
+
