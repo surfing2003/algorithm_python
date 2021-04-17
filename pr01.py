@@ -135,13 +135,16 @@
 
 # print(max(dp[N-1]))
 
-while True:
-    temp = input()
+# num = [i**2 for i in map(int,input().split()) ]
+# print(sum(num)%10)
 
-    if temp == "0":
-        break
+# while True:
+#     temp = input()
 
-    if temp == temp[::-1]:
-        print("yes")
-    else:
-        print("no")
+#     if temp == "0":
+#         break
+
+#     if temp == temp[::-1]:
+#         print("yes")
+#     else:
+#         print("no")
