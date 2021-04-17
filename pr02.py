@@ -1284,3 +1284,47 @@ input = lambda : sys.stdin.readline().rstrip()
 #     print()
 
 # topology_sort()
+
+# 소수 판별 알고리즘
+def is_prime_number1(x):
+    for i in range(2,x):
+        if x % i == 0:
+            return False
+    return True
+
+print(is_prime_number1(4))
+print(is_prime_number1(7))
+
+import math
+
+def is_prime_number2(x):
+    for i in range(2, int(math.sqrt(x))+1):
+        if x % i == 0:
+            return False
+    return True
+
+print(is_prime_number1(4))
+print(is_prime_number1(7))
+
+# 에라토스테네스의 체
+# 2부터 N까지의 모든 자연수를 나열한다. 
+# 남은 수 중에서 아직 처리하지 않은 가장 작은 소수 i를 찾는다 
+# 남은 수중에서 i의 배수를 모두 제거한다. (i는 제거하지 않는다.)
+# 더이상 반복할 수 없을 때까지 반복
+
+import math
+
+n = 1000
+array = [True] * (n+1)
+
+for i in range(2,int(math.sqrt(n))+1):
+    if array[i] == True:
+        j = 2
+        while i*j <= n:
+            array[i*j] = False
+            j+=1
+
+for i in range(2,n+1):
+    if array[i]:
+        print(i, end=" ")
+print()
