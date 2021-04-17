@@ -1333,35 +1333,65 @@ input = lambda : sys.stdin.readline().rstrip()
 # 특정한 합을 가지는 부분 연속 수열 찾기 
 
 
-n = 5
-m = 5
+# n = 5
+# m = 5
 
-data = [1,2,3,2,5]
+# data = [1,2,3,2,5]
 
-count = 0
-interval = 0
-end = 0
+# count = 0
+# interval = 0
+# end = 0
 
-for start in range(n):
-    while interval < m and end < n:
-        interval += data[end]
-        end += 1
-    if interval == m:
-        count += 1
-    interval -= data[start]
+# for start in range(n):
+#     while interval < m and end < n:
+#         interval += data[end]
+#         end += 1
+#     if interval == m:
+#         count += 1
+#     interval -= data[start]
 
-# 구간합 
-# 접두사합 : 배열의 앞부터 특정 위치까지의 합을 미리 구해놓는 것
+# # 구간합 
+# # 접두사합 : 배열의 앞부터 특정 위치까지의 합을 미리 구해놓는 것
 
-n = 5
-data = [10,20,30,40,50]
+# n = 5
+# data = [10,20,30,40,50]
 
-sum_val = 0
-prefix_sum = [0]
-for i in data:
-    sum_val += i
-    prefix_sum.append(sum_val)
+# sum_val = 0
+# prefix_sum = [0]
+# for i in data:
+#     sum_val += i
+#     prefix_sum.append(sum_val)
 
-left = 3
-right = 4
-print(prefix_sum[right] - prefix_sum[left-1])
+# left = 3
+# right = 4
+# print(prefix_sum[right] - prefix_sum[left-1])
+
+# N,M = map(int, input().split())
+# chess = [list(input()) for _ in range(N)]
+
+# chk = [["W","B","W","B","W","B","W","B"],
+#         ["B","W","B","W","B","W","B","W"]]
+# count_1 = 0
+# # count_2 = 0
+# answer = []
+# for i in range(N-7):
+#     for j in range(M-7):
+#         temp_chess = [chess[i+x][j:j+8] for x in range(8)]
+#         chk_t = 0
+#         for temp in temp_chess:
+#             for k in range(8):
+#                 if temp[k] != chk[chk_t][k]:
+#                     count_1 += 1
+#             chk_t = (chk_t+1) % 2
+
+#         # chk_t =1
+#         # for temp in temp_chess:
+#         #     for k in range(8):
+#         #         if temp[k] != chk[chk_t][k]:
+#         #             count_2 += 1
+#         #     chk_t = (chk_t+1) % 2
+
+#         answer.append(min(count_1,64-count_1))
+#         count_1 = 0
+#         # count_2 = 0
+# print(min(answer))
