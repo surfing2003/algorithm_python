@@ -148,3 +148,32 @@
 #         print("yes")
 #     else:
 #         print("no")
+# import sys
+# input = lambda : sys.stdin.readline().rstrip()
+# N, M = map(int,input().split())
+# dic_1 ={}
+# dic_2 ={}
+
+# for i in range(1,N+1):
+#     temp = input()
+#     dic_1[temp] = i
+#     dic_2[str(i)] = temp
+
+# for _ in range(M):
+#     temp = input()
+#     try:
+#         print(dic_1[temp])
+#     except:
+#         print(dic_2[temp])
+
+from math import factorial
+N = int(input())
+a = factorial(N)
+answer = 0
+while a % 10 == 0:
+    answer += 1
+    a //= 10
+print(answer)
+
+print(N//5 + N//25 + N//125)
+
