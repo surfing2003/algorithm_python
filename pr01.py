@@ -37,4 +37,85 @@
 #     print(temp[0][0])
 # print(max(num) - min(num))
 
-print(''.join(sorted(input())[::-1]))
+# import sys
+# input = lambda: sys.stdin.readline().rstrip()
+
+# N = int(input())
+# num = [list(map(int,input().split())) for _ in range(N)]
+# num.sort(key = lambda x: (x[0],x[1]))
+
+# for i in num:
+#     print(i[0],i[1])
+
+# import sys
+# input = lambda: sys.stdin.readline().rstrip()
+
+# N = int(input())
+# num = list(map(int,input().split()))
+# temp = list(sorted(set(num)))
+# d = {temp[i]:i for i in range(len(temp))}
+# res = [d[i] for i in num]
+# print(*res)
+
+
+# n = int(input())
+# a = [False] * n
+# b = [False] * (2*n-1)
+# c = [False] * (2*n-1)
+
+# answer = 0
+# def queen(i):
+#     global answer
+#     if i == n:
+#         answer += 1
+#         return
+#     for j in range(n):
+#         if not (a[j] or b[i+j] or c[i-j+n-1]):
+#             a[j] = b[i+j] = c[i-j+n-1] = True
+#             queen(i+1)
+#             a[j] = b[i+j] = c[i-j+n-1] = False
+# queen(0)
+# print(answer)
+
+# sudoku = [list(map(int,input().split())) for _ in range(9)]
+# missing = [(i,j) for i in range(9) for j in range(9) if sudoku[i][j] == 0]
+
+# def find_num(i,j):
+#     num = [1,2,3,4,5,6,7,8,9]
+
+#     for k in range(9):
+#         if sudoku[i][k] in num:
+#             num.remove(sudoku[i][k])
+#         if sudoku[k][j] in num:
+#             num.remove(sudoku[k][j])
+
+#     i //= 3
+#     j //= 3
+
+#     for p in range(i*3, (i+1)*3):
+#         for q in range(j*3, (j+1)*3):
+#             if sudoku[p][q] in num:
+#                 num.remove(sudoku[p][q])
+#     return num
+
+# chk = False
+# def dfs(x):
+#     global chk
+
+#     if chk:
+#         return
+#     if x == len(missing):
+#         for row in sudoku:
+#             print(*row)
+#         chk = True
+#         return
+    
+#     else:
+#         (i,j) = missing[x]
+#         num = find_num(i,j)
+
+#         for k in num:
+#             sudoku[i][j] = k
+#             dfs(x+1)
+#             sudoku[i][j] = 0
+# dfs(0)
