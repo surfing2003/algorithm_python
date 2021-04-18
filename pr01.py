@@ -166,14 +166,40 @@
 #     except:
 #         print(dic_2[temp])
 
-from math import factorial
+# from math import factorial
+# N = int(input())
+# a = factorial(N)
+# answer = 0
+# while a % 10 == 0:
+#     answer += 1
+#     a //= 10
+# print(answer)
+
+# print(N//5 + N//25 + N//125)
+
+
+def b(array,target,start,end):
+    if start > end:
+        return False
+    mid = (start+end) // 2
+    if array[mid] == target:
+        return True
+    elif array[mid] < target:
+        return b(array,target,mid+1,end)
+    else:
+        return b(array,target,start,mid-1)
+   
+
 N = int(input())
-a = factorial(N)
-answer = 0
-while a % 10 == 0:
-    answer += 1
-    a //= 10
-print(answer)
+num = list(map(int,input().split()))
+num.sort()
 
-print(N//5 + N//25 + N//125)
 
+M = int(input())
+test = list(map(int,input().split()))
+
+for i in test:
+    if b(num,i,0,N-1):
+        print("1")
+    else:
+        print("0")
