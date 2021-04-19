@@ -177,29 +177,88 @@
 
 # print(N//5 + N//25 + N//125)
 
-
-def b(array,target,start,end):
-    if start > end:
-        return False
-    mid = (start+end) // 2
-    if array[mid] == target:
-        return True
-    elif array[mid] < target:
-        return b(array,target,mid+1,end)
-    else:
-        return b(array,target,start,mid-1)
+# def b(array,target,start,end):
+#     if start > end:
+#         return False
+#     mid = (start+end) // 2
+#     if array[mid] == target:
+#         return True
+#     elif array[mid] < target:
+#         return b(array,target,mid+1,end)
+#     else:
+#         return b(array,target,start,mid-1)
    
 
-N = int(input())
-num = list(map(int,input().split()))
-num.sort()
+# N = int(input())
+# num = list(map(int,input().split()))
+# num.sort()
 
 
-M = int(input())
-test = list(map(int,input().split()))
+# M = int(input())
+# test = list(map(int,input().split()))
 
-for i in test:
-    if b(num,i,0,N-1):
-        print("1")
-    else:
-        print("0")
+# for i in test:
+#     if b(num,i,0,N-1):
+#         print("1")
+#     else:
+#         print("0")
+
+# n = int(input())
+# house = []
+# for _ in range(n):
+#     house.append(list(map(int,input().split())))
+
+# value = [[0]*3 for _ in range(n)]
+# value[0] = house[0]
+
+
+# for i in range(1,n):
+#     value[i][0] = house[i][0] + min(value[i-1][1],value[i-1][2])
+#     value[i][1] = house[i][1] + min(value[i-1][0],value[i-1][2])
+#     value[i][2] = house[i][2] + min(value[i-1][0],value[i-1][1])
+#     print(value)
+
+# print(min(value[n-1][0],value[n-1][1],value[n-1][2]))
+
+## class 만들어서 풀어보기 
+# N = int(input())
+
+# tree = {}
+# for _ in range(N):
+#     k, v1, v2 = input().split()
+#     tree[k] = [v1,v2]
+
+# def preorder(k):
+#     print(k,end="")
+#     if tree[k][0] != ".":
+#         preorder(tree[k][0])
+#     if tree[k][1] != ".":
+#         preorder(tree[k][1])
+
+# def innerorder(k):
+#     if tree[k][0] != ".":
+#         innerorder(tree[k][0])
+#     print(k,end="")
+#     if tree[k][1] != ".":
+#         innerorder(tree[k][1])
+
+# def postorder(k):
+#     if tree[k][0] != ".":
+#         postorder(tree[k][0])
+#     if tree[k][1] != ".":
+#         postorder(tree[k][1])
+#     print(k,end="")
+
+# preorder("A")
+# print()
+# innerorder("A")
+# print()
+# postorder("A")
+# print()
+
+import math
+
+n, m = map(int,input().split())
+a = math.factorial(n)
+b = math.factorial(n-m) * math.factorial(m)
+print(a//b)
