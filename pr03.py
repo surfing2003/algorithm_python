@@ -104,4 +104,4 @@
 #         answer = min(answer,(W*H)-sum([i.count(0) for i in copy_block]))
 #     print("#{} {}".format(test_case,answer))
 
-
+  
