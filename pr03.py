@@ -105,3 +105,94 @@
 #     print("#{} {}".format(test_case,answer))
 
   
+
+from collections import deque
+from itertools import product
+
+def out_check(x,y):
+    return not (x < 0 or y < 0 or x >= 4 or y >= N)
+
+def check(maps):
+    chk = []
+    for j in range(4):
+        if all([maps[i][j] for i in range(4)]):
+            chk.append(j)
+    return chk
+
+def remap(N,maps):
+    temp = [[0]*N for _ in range(4)]
+    for x in range(4):
+        for y in range(N):
+            if maps[x][y] != 0:
+                for k in direction[maps[x][y]]:
+                    nx = x + dx[k]
+                    ny = y + dy[k]
+                    if out_check(nx,ny):
+                        if temp[nx][ny] == 0:
+                            temp[nx][ny] = maps[x][y]
+                            break
+                        else:
+                            temp[nx][ny] = min(maps[x][y],temp[nx][ny])
+                            break
+    for i in temp:
+        if i.count(0) == N:
+            continue
+        else:
+            while i[0] == 0:
+                i.pop(0)
+                i.append(0)
+    return temp
+def remap2(N,maps):
+    for i in maps:
+        if i.count(0) == N:
+            continue
+        else:
+            while i[0] == 0:
+                i.pop(0)
+                i.append(0)
+
+    return maps
+
+N = int(input())
+
+dx = [0,0,-1,-1,-1,0,1,1,1]
+dy = [0,1,1,0,-1,-1,-1,0,1]
+answer = 0
+direction = {}
+for i in range(1,9):
+    direction[i] = list(map(int,input().split()))
+
+blocks = []
+M = 0
+for _ in range(N):
+    k,c = map(int,input().split())
+    blocks.append((k,c))
+    if c == 0:
+        M += 1
+N *= 2
+point = list(product(range(4),repeat=M))
+
+for p in point:
+    p = list(p)
+    score = 0
+    maps = [[0]*N for _ in range(4)]
+    for k,c in blocks:
+        score_yn = False
+        if c != 0:
+            maps[c-1][maps[c-1].index(0)] = k
+        else:
+            c = p.pop(0)
+            maps[c][maps[c].index(0)] = k
+        for idx in check(maps):
+            score += 1
+            for i in range(4):
+                maps[i][idx] = 0
+        maps = remap(N,maps)
+        for idx in check(maps):
+            score += 1
+            for i in range(4):
+                maps[i][idx] = 0
+        maps = remap2(N,maps)
+    answer = max(answer,score)
+print(answer)        
+            
