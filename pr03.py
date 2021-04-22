@@ -194,17 +194,59 @@
 #     answer = max(answer,score)
 # print(answer)        
             
+# N = int(input())
 
-from itertools import combinations
+# dp = [0] * 1000001
+
+# dp[1] = 1
+# dp[2] = 2
+
+# for i in range(3,N+1):
+#     dp[i] = (dp[i-1] + dp[i-2]) %15746
+    
+# print(dp[N])
+
+# N = 21
+
+# dp = [[[0]*N for _ in range(N)] for _ in range(N)]
+
+# def w(a,b,c):
+#     if a<=0 or b<=0 or c<=0:
+#         return 1
+
+#     if a>20 or b>20 or c>20:
+#         return w(20,20,20)
+    
+#     if dp[a][b][c]:
+#         return dp[a][b][c]
+    
+#     if a<b<c:
+#         dp[a][b][c] = w(a,b,c-1)+w(a,b-1,c-1)-w(a,b-1,c)
+#         return dp[a][b][c]
+    
+#     dp[a][b][c] = w(a-1,b,c,)+w(a-1,b-1,c)+w(a-1,b,c-1)-w(a-1,b-1,c-1)
+#     return dp[a][b][c]
+
+# while True:
+#     a,b,c = map(int,input().split())
+#     if a == -1 and b == -1 and  c==-1:
+#         break
+#     print("w({}, {}, {}) = {}".format(a,b,c,w(a,b,c)))
+
 
 N = int(input())
 
-dp = [0] * 1000001
+dp = [[0]*10 for _ in range(101)]
+for i in range(1,10):
+    dp[1][i] = 1
 
-dp[1] = 1
-dp[2] = 2
-
-for i in range(3,N+1):
-    dp[i] = (dp[i-1] + dp[i-2]) %15746
-    
-print(dp[N])
+for i in range(2,N+1):
+    for j in range(10):
+        if j == 0:
+            dp[i][j] = dp[i-1][j+1]
+        elif j == 9:
+            dp[i][j] = dp[i-1][j-1] 
+        else:
+            dp[i][j] = (dp[i-1][j-1] + dp[i-1][j+1])
+        
+print(sum(dp[N]) % 1000000000)
