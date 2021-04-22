@@ -234,19 +234,43 @@
 #     print("w({}, {}, {}) = {}".format(a,b,c,w(a,b,c)))
 
 
-N = int(input())
+# N = int(input())
 
-dp = [[0]*10 for _ in range(101)]
-for i in range(1,10):
-    dp[1][i] = 1
+# dp = [[0]*10 for _ in range(101)]
+# for i in range(1,10):
+#     dp[1][i] = 1
 
-for i in range(2,N+1):
-    for j in range(10):
-        if j == 0:
-            dp[i][j] = dp[i-1][j+1]
-        elif j == 9:
-            dp[i][j] = dp[i-1][j-1] 
-        else:
-            dp[i][j] = (dp[i-1][j-1] + dp[i-1][j+1])
+# for i in range(2,N+1):
+#     for j in range(10):
+#         if j == 0:
+#             dp[i][j] = dp[i-1][j+1]
+#         elif j == 9:
+#             dp[i][j] = dp[i-1][j-1] 
+#         else:
+#             dp[i][j] = (dp[i-1][j-1] + dp[i-1][j+1])
         
-print(sum(dp[N]) % 1000000000)
+# print(sum(dp[N]) % 1000000000)
+
+
+# N = int(input())
+# dp = [0] * (N+1)
+# wine = [0]
+# for _ in range(N):
+#     wine.append(int(input()))
+
+# dp[1] = wine[1]
+# if N>1:
+#     dp[2] = wine[2] + wine[1]
+
+# for i in range(3,N+1):
+#     a = dp[i-3] + wine[i-1] + wine[i]
+#     b = dp[i-2] + wine[i]
+#     c = dp[i-1] 
+#     dp[i] = max(a,b,c)
+
+# print(dp[N])
+
+
+
+
+
