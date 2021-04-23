@@ -308,3 +308,39 @@
 # for i in arr:
 #     dp3[i] = max(dp3[:i]) + i
 # print(max(dp3))
+
+# a = ' '+input().upper()
+# b = ' '+input().upper()
+
+# dp = [[0] * len(b) for _ in range(len(a))]
+
+# for i in range(1,len(a)):
+#     for j in range(1,len(b)):
+#         if a[i] == b[j]:
+#             dp[i][j] = dp[i-1][j-1]+1
+#         else:
+#             dp[i][j] = max(dp[i-1][j],dp[i][j-1])
+# print(dp[-1][-1])
+
+N = int(input())
+arr1 = list(map(int,input().split()))
+arr2 = arr1[::-1]
+dp1 = [1] * N
+dp2 = [1] * N
+
+for i in range(1,N):
+    for j in range(0,i):
+        if arr1[j] < arr1[i]:
+            dp1[i] = max(dp1[i],dp1[j]+1)
+
+for i in range(1,N):
+    for j in range(0,i):
+        if arr2[j] < arr2[i]:
+            dp2[i] = max(dp2[i],dp2[j]+1)
+
+answer = 0
+for i in range(N):
+    answer = max(dp1[i]+dp2[-i-1]-1,answer)
+# print(arr1,dp1)
+# print(arr2,dp2)
+print(answer)
