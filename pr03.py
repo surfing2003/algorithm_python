@@ -344,6 +344,7 @@
 # # print(arr1,dp1)
 # # print(arr2,dp2)
 # print(answer)
+
 # import sys
 # input = lambda : sys.stdin.readline().rstrip()
 
@@ -359,3 +360,14 @@
 #     total += min_price*roads[i]
 
 # print(total)
+
+import sys
+N = int(input())
+answer = []
+K = list(map(int,sys.stdin.read().split()))
+for i in K:
+    if i == 0:
+        answer.pop()
+        continue
+    answer.append(i)
+print(sum(answer))
