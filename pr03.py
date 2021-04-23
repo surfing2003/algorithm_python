@@ -270,24 +270,41 @@
 
 # print(dp[N])
 
-N = int(input())
-lines = [list(map(int,input().split())) for _ in range(N)]
-lines.sort(key= lambda x: x[0])
+# N = int(input())
+# lines = [list(map(int,input().split())) for _ in range(N)]
+# lines.sort(key= lambda x: x[0])
 
-dp = [1] * N
+# dp = [1] * N
 
-for i in range(1,N):
-    for j in range(0,i):
-        if lines[j][1] < lines[i][1]:
-            dp[i] = max(dp[i],dp[j]+1)
+# for i in range(1,N):
+#     for j in range(0,i):
+#         if lines[j][1] < lines[i][1]:
+#             dp[i] = max(dp[i],dp[j]+1)
 
-print(N - max(dp))
+# print(N - max(dp))
 
-N = int(input())
-lines = [list(map(int,input().split())) for _ in range(N)]
-lines.sort(key= lambda x: x[0])
+# N = int(input())
+# lines = [list(map(int,input().split())) for _ in range(N)]
+# lines.sort(key= lambda x: x[0])
 
-dp = [0] * 501
-for s, d in lines:
-    dp[d] = max(dp[:d]) + 1
-print(N - max(dp))
+# dp = [0] * 501
+# for s, d in lines:
+#     dp[d] = max(dp[:d]) + 1
+# print(N - max(dp))
+
+
+# N = int(input())
+# arr = list(map(int,input().split()))
+# dp = [0] * N
+
+# dp[0] = arr[0]
+# for i in range(1,N):
+#     dp[i] = max(dp[i-1]+arr[i],arr[i])
+# print(max(dp))
+
+# N = int(input())
+# arr = list(map(int,input().split()))
+# dp3 = [0] * 101
+# for i in arr:
+#     dp3[i] = max(dp3[:i]) + i
+# print(max(dp3))
