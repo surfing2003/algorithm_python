@@ -270,7 +270,24 @@
 
 # print(dp[N])
 
+N = int(input())
+lines = [list(map(int,input().split())) for _ in range(N)]
+lines.sort(key= lambda x: x[0])
 
+dp = [1] * N
 
+for i in range(1,N):
+    for j in range(0,i):
+        if lines[j][1] < lines[i][1]:
+            dp[i] = max(dp[i],dp[j]+1)
 
+print(N - max(dp))
 
+N = int(input())
+lines = [list(map(int,input().split())) for _ in range(N)]
+lines.sort(key= lambda x: x[0])
+
+dp = [0] * 501
+for s, d in lines:
+    dp[d] = max(dp[:d]) + 1
+print(N - max(dp))
