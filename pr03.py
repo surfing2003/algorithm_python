@@ -322,25 +322,40 @@
 #             dp[i][j] = max(dp[i-1][j],dp[i][j-1])
 # print(dp[-1][-1])
 
-N = int(input())
-arr1 = list(map(int,input().split()))
-arr2 = arr1[::-1]
-dp1 = [1] * N
-dp2 = [1] * N
+# N = int(input())
+# arr1 = list(map(int,input().split()))
+# arr2 = arr1[::-1]
+# dp1 = [1] * N
+# dp2 = [1] * N
 
-for i in range(1,N):
-    for j in range(0,i):
-        if arr1[j] < arr1[i]:
-            dp1[i] = max(dp1[i],dp1[j]+1)
+# for i in range(1,N):
+#     for j in range(0,i):
+#         if arr1[j] < arr1[i]:
+#             dp1[i] = max(dp1[i],dp1[j]+1)
 
-for i in range(1,N):
-    for j in range(0,i):
-        if arr2[j] < arr2[i]:
-            dp2[i] = max(dp2[i],dp2[j]+1)
+# for i in range(1,N):
+#     for j in range(0,i):
+#         if arr2[j] < arr2[i]:
+#             dp2[i] = max(dp2[i],dp2[j]+1)
 
-answer = 0
-for i in range(N):
-    answer = max(dp1[i]+dp2[-i-1]-1,answer)
-# print(arr1,dp1)
-# print(arr2,dp2)
-print(answer)
+# answer = 0
+# for i in range(N):
+#     answer = max(dp1[i]+dp2[-i-1]-1,answer)
+# # print(arr1,dp1)
+# # print(arr2,dp2)
+# print(answer)
+# import sys
+# input = lambda : sys.stdin.readline().rstrip()
+
+# N = int(input())
+# roads = list(map(int,input().split()))
+# oils = list(map(int,input().split()))
+
+# min_price = oils[0]
+# total = 0
+# for i in range(N-1):
+#     if oils[i] < min_price:
+#         min_price = oils[i]
+#     total += min_price*roads[i]
+
+# print(total)
