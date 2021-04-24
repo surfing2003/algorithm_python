@@ -608,29 +608,55 @@
 #     choose(S[1:],temp)
 #     print()
 
-L,C = map(int,input().split())
-chars = input().split()
-chars.sort()
-temp = []
+# L,C = map(int,input().split())
+# chars = input().split()
+# chars.sort()
+# temp = []
 
-def check(temp):
-    a = 0
-    b = 0
-    for i in temp:
-        if i in ['a','e','i','o','u']:
-            a += 1
-        else:
-            b += 1
-    return (a>0 and b>1)
+# def check(temp):
+#     a = 0
+#     b = 0
+#     for i in temp:
+#         if i in ['a','e','i','o','u']:
+#             a += 1
+#         else:
+#             b += 1
+#     return (a>0 and b>1)
 
-def choose(idx,cnt,temp):
-    if cnt == L and check(temp):
-        print(''.join(temp))
-        return
+# def choose(idx,cnt,temp):
+#     if cnt == L and check(temp):
+#         print(''.join(temp))
+#         return
 
-    for i in range(idx,C):
-        temp.append(chars[i])
-        choose(i+1,cnt+1,temp)
-        temp.pop()    
+#     for i in range(idx,C):
+#         temp.append(chars[i])
+#         choose(i+1,cnt+1,temp)
+#         temp.pop()    
 
-choose(0,0,temp)
+# choose(0,0,temp)
+
+
+# R,C = map(int,input().split())
+# arr = [list(input()) for _ in range(R)]
+# temp = [ord(arr[0][0])]
+# visited = [[False]*C for _ in range(R)]
+# dx = [-1,1,0,0]
+# dy = [0,0,-1,1]
+# answer = 0
+
+# def choose(x,y,temp,c):
+#     global answer
+#     answer = max(answer,c)
+
+#     for i in range(4):
+#         nx = x+dx[i]
+#         ny = y+dy[i]
+#         if -1<nx<R and -1<ny<C:
+#             t = ord(arr[nx][ny])
+#             if t not in temp:
+#                 temp.append(t)
+#                 choose(nx,ny,temp,c+1)
+#                 temp.pop()
+
+# choose(0,0,temp,1)
+# print(answer)
