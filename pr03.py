@@ -524,21 +524,60 @@
 #             print(answer)
 #             break
 
+from collections import deque
+
+dir = [(1,0),(0,1),(-1,0),(0,-1)]
+n, q = map(int,input().split())
+n = 2**n
+arr = [ list(map(int,input().split())) for i in range(n)]
+
+for l in list(map(int,input().split())):
+    k = 2**l
+    for x in range(0,n,k):
+        for y in range(0,n,k):
+            temp = [arr[i][y:y+k] for i in range(x,x+k)]
+            for i in range(k):
+                for j in range(k):
+                    arr[x+j][y+k-1-i] = temp[i][j]
+
+    cnt = [[0] * n for _ in range(n)]
+    for x in range(n):
+        for y in range(n):
+            for d in dir:
+                nx = x + d[0]
+                ny = y + d[1]
+                if 0<=nx<n and 0<=ny<n and arr[nx][ny]:
+                    cnt[x][y] += 1
+
+    for x in range(n):
+        for y in range(n):
+            if arr[x][y] > 0 and cnt[x][y] < 3:
+                arr[x][y] -= 1
 
 
-arr = [[i*8 + j +1 for j in range(8)] for i in range(8)]
-n = 8
+print(sum(sum(i) for i in arr))
 
-def rotate(level):
-    for l in range(1,level+1):
-        k = 2**l
-        for x in range(0,n,k):
-            for y in range(0,n,k):
-                temp = [arr[i][y:y+k] for i in range(x,x+k)]
-                for i in range(k):
-                    for j in range(k):
-                        arr[x+j][y+k-1-i] = temp[i][j]
+visited = [[False]*n for _ in range(n)]
+answer = 0
+for i in range(n):
+    for j in range(n):
+        q = deque()
+        if not visited[i][j] and arr[i][j] != 0:
+            q.append([i,j])
+            visited[i][j] = True
+            cnt = 1
 
-rotate(2)
+            while q:
+                x,y = q.popleft()
+                for d in dir:
+                    nx = x+d[0]
+                    ny = y+d[1]
+                    if -1<nx<n and -1<ny<n and not visited[nx][ny] and arr[nx][ny] != 0:
+                        q.append([nx,ny])
+                        visited[nx][ny] = True
+                        cnt += 1
+
+            answer = max(answer,cnt)
 for i in arr:
     print(i)
+print(answer)
