@@ -580,3 +580,30 @@
 #             answer = max(answer,cnt)
 # print(answer)
 
+# def choose(S,temp):
+#     if len(temp) == 6:
+#         print(*temp)
+#         return
+
+#     for i in S:
+#         if len(temp) == 0:
+#             temp.append(i)
+#             choose(S,temp)
+#             temp.pop()
+
+#         else:
+#             if temp[-1]  < i:
+#                 temp.append(i)
+#                 choose(S,temp)
+#                 temp.pop()
+
+
+# while True:
+#     S = list(map(int,input().split()))
+#     if S[0] == 0:
+#         break
+    
+#     temp = []
+
+#     choose(S[1:],temp)
+#     print()
