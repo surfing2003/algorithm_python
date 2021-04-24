@@ -361,13 +361,184 @@
 
 # print(total)
 
-import sys
-N = int(input())
-answer = []
-K = list(map(int,sys.stdin.read().split()))
-for i in K:
-    if i == 0:
-        answer.pop()
-        continue
-    answer.append(i)
-print(sum(answer))
+# import sys
+# N = int(input())
+# answer = []
+# K = list(map(int,sys.stdin.read().split()))
+# for i in K:
+#     if i == 0:
+#         answer.pop()
+#         continue
+#     answer.append(i)
+# print(sum(answer))
+
+# from collections import deque
+# import sys
+# input = sys.stdin.readline
+
+# N,K = map(int,input().split())
+
+# rails = deque(map(int,input().split()))
+# robot = deque([0]*N)
+# answer = 0
+
+# while True:
+
+#     # 벨트 한칸 이동
+#     rails.rotate(1)
+#     robot.rotate(1)
+#     robot[N-1] = 0
+
+#     for i in range(N-2,-1,-1):
+#         if (robot[i] == 1 and robot[i+1] == 0 and rails[i+1] >= 1): 
+#             robot[i] = 0
+#             robot[i+1] = 1
+#             rails[i+1]-=1
+#     robot[N-1] = 0
+#     # 1위치 로봇 올리기
+#     if (robot[0] == 0 and rails[0] >= 1):
+#         robot[0] = 1
+#         rails[0] -= 1
+
+#     answer += 1
+
+#     if rails.count(0) >= K :
+#         break
+
+# print(answer)
+
+# from collections import deque
+# import sys
+# input = lambda : sys.stdin.readline().rstrip()
+
+# dr = [-1,-1,0,1,1,1,0,-1]
+# dc = [0,1,1,1,0,-1,-1,-1]
+# N, M, K = map(int,input().split())
+# arr = [[[] for _ in range(N)] for _ in range(N)]
+# q = deque()
+# answer = 0
+
+# for _ in range(M):
+#     r,c,m,s,d = map(int,input().split())
+#     arr[r-1][c-1].append([r-1,c-1,m,s,d])
+#     q.append([r-1,c-1,m,s,d])
+
+# for _ in range(K):
+#     for _ in range(len(q)):
+#        r,c,m,s,d = q.popleft()
+#        nr, nc = (r+s*dr[d])%N, (c+s*dc[d])%N
+#        arr[nr][nc].append([nr,nc,m,s,d])
+#        arr[r][c].remove([r,c,m,s,d])
+    
+#     for i in range(N):
+#         for j in range(N):
+#             if len(arr[i][j]) > 1:
+#                 m = 0
+#                 s = 0
+#                 d = 0
+#                 for k in arr[i][j]:
+#                     m += k[2]
+#                     s += k[3]
+#                     d += (k[4] % 2)
+#                 m //= 5
+#                 if m != 0:
+#                     s //= len(arr[i][j])
+#                     if d == 0 or d == len(arr[i][j]):
+#                         arr[i][j] = [[i,j,m,s,0],[i,j,m,s,2],[i,j,m,s,4],[i,j,m,s,6]]
+#                     else:
+#                         arr[i][j] = [[i,j,m,s,1],[i,j,m,s,3],[i,j,m,s,5],[i,j,m,s,7]]
+#                 else:
+#                     arr[i][j] = []
+    
+#     for i in range(N):
+#         for j in range(N):
+#             if arr[i][j] != []:
+#                 q += arr[i][j]
+    
+# for i in range(N):
+#     for j in range(N):
+#         for k in arr[i][j]:
+#             answer += k[2]
+# print(answer)
+
+# import sys
+# input = lambda : sys.stdin.readline().rstrip()
+
+# rate_left = [[0,0,2,0,0],[0,10,7,1,0],[5,'a',0,0,0],[0,10,7,1,0],[0,0,2,0,0]]
+# rate_down = [[0,0,0,0,0],[0,1,0,1,0],[2,7,0,7,2],[0,10,'a',10,0],[0,0,5,0,0]]
+# rate_right = [[0,0,2,0,0],[0,1,7,10,0],[0,0,0,'a',5],[0,1,7,10,0],[0,0,2,0,0]]
+# rate_up = [[0,0,5,0,0],[0,10,'a',10,0],[2,7,0,7,2],[0,1,0,1,0],[0,0,0,0,0]]
+
+
+# N = int(input())
+# arr = [list(map(int,input().split())) for _ in range(N)]
+
+# def move(answer,arr,rate,nx,ny):
+#     a, b = nx-2, ny-2
+#     temp = 0
+#     for i in range(5):
+#         for j in range(5):
+#             if rate[i][j] != 'a' and rate[i][j] != 0:
+#                 if -1 < i+a < N and -1 < j+b < N:
+#                     arr[i+a][j+b] += arr[nx][ny] * rate[i][j] // 100
+#                 else:
+#                     answer += arr[nx][ny] * rate[i][j] // 100
+#                 temp += arr[nx][ny] * rate[i][j] // 100
+#             elif rate[i][j] == 'a':
+#                 point = (i,j)
+    
+#     if -1 < point[0]+a < N and -1 < point[1]+b < N:
+#         arr[point[0]+a][point[1]+b] += arr[nx][ny] - temp
+#     else:
+#         answer += arr[nx][ny] - temp
+#     arr[nx][ny] = 0
+#     return arr, answer
+
+# x, y = N//2, N//2
+
+# dx = [0,1,0,-1]
+# dy = [-1,0,1,0]
+
+# time = 1
+# flag = 0
+# answer = 0
+# while flag != 1:
+#     for i in range(4):
+#         for j in range(time):
+#             x, y = x+dx[i], y+dy[i]
+#             if i == 0:
+#                 arr,answer = move(answer,arr,rate_left,x,y)
+#             elif i == 1:
+#                 arr,answer = move(answer,arr,rate_down,x,y)
+#             elif i == 2:
+#                 arr,answer = move(answer,arr,rate_right,x,y)
+#             elif i == 3:
+#                 arr,answer = move(answer,arr,rate_up,x,y)
+            
+#             if (x,y) == (0,0):
+#                 flag = 1
+#                 break
+#         if i == 1 or i == 3:
+#             time += 1
+#         if flag == 1:
+#             print(answer)
+#             break
+
+
+
+arr = [[i*8 + j +1 for j in range(8)] for i in range(8)]
+n = 8
+
+def rotate(level):
+    for l in range(1,level+1):
+        k = 2**l
+        for x in range(0,n,k):
+            for y in range(0,n,k):
+                temp = [arr[i][y:y+k] for i in range(x,x+k)]
+                for i in range(k):
+                    for j in range(k):
+                        arr[x+j][y+k-1-i] = temp[i][j]
+
+rotate(2)
+for i in arr:
+    print(i)
