@@ -483,7 +483,6 @@
 # rate_right = [[0,0,2,0,0],[0,1,7,10,0],[0,0,0,'a',5],[0,1,7,10,0],[0,0,2,0,0]]
 # rate_up = [[0,0,5,0,0],[0,10,'a',10,0],[2,7,0,7,2],[0,1,0,1,0],[0,0,0,0,0]]
 
-
 # N = int(input())
 # arr = [list(map(int,input().split())) for _ in range(N)]
 
@@ -509,10 +508,8 @@
 #     return arr, answer
 
 # x, y = N//2, N//2
-
 # dx = [0,1,0,-1]
 # dy = [-1,0,1,0]
-
 # time = 1
 # flag = 0
 # answer = 0
@@ -538,61 +535,61 @@
 #             print(answer)
 #             break
 
-# from collections import deque
+from collections import deque
 
-# dir = [(1,0),(0,1),(-1,0),(0,-1)]
-# n, q = map(int,input().split())
-# n = 2**n
-# arr = [ list(map(int,input().split())) for i in range(n)]
+dir = [(1,0),(0,1),(-1,0),(0,-1)]
+n, q = map(int,input().split())
+n = 2**n
+arr = [ list(map(int,input().split())) for i in range(n)]
 
-# for l in list(map(int,input().split())):
-#     k = 2**l
-#     for x in range(0,n,k):
-#         for y in range(0,n,k):
-#             temp = [arr[i][y:y+k] for i in range(x,x+k)]
-#             for i in range(k):
-#                 for j in range(k):
-#                     arr[x+j][y+k-1-i] = temp[i][j]
+for l in list(map(int,input().split())):
+    k = 2**l
+    for x in range(0,n,k):
+        for y in range(0,n,k):
+            temp = [arr[i][y:y+k] for i in range(x,x+k)]
+            for i in range(k):
+                for j in range(k):
+                    arr[x+j][y+k-1-i] = temp[i][j]
 
-#     cnt = [[0] * n for _ in range(n)]
-#     for x in range(n):
-#         for y in range(n):
-#             for d in dir:
-#                 nx = x + d[0]
-#                 ny = y + d[1]
-#                 if 0<=nx<n and 0<=ny<n and arr[nx][ny]:
-#                     cnt[x][y] += 1
+    cnt = [[0] * n for _ in range(n)]
+    for x in range(n):
+        for y in range(n):
+            for d in dir:
+                nx = x + d[0]
+                ny = y + d[1]
+                if 0<=nx<n and 0<=ny<n and arr[nx][ny]:
+                    cnt[x][y] += 1
 
-#     for x in range(n):
-#         for y in range(n):
-#             if arr[x][y] > 0 and cnt[x][y] < 3:
-#                 arr[x][y] -= 1
+    for x in range(n):
+        for y in range(n):
+            if arr[x][y] > 0 and cnt[x][y] < 3:
+                arr[x][y] -= 1
 
 
-# print(sum(sum(i) for i in arr))
+print(sum(sum(i) for i in arr))
 
-# visited = [[False]*n for _ in range(n)]
-# answer = 0
-# for i in range(n):
-#     for j in range(n):
-#         q = deque()
-#         if not visited[i][j] and arr[i][j] != 0:
-#             q.append([i,j])
-#             visited[i][j] = True
-#             cnt = 1
+visited = [[False]*n for _ in range(n)]
+answer = 0
+for i in range(n):
+    for j in range(n):
+        q = deque()
+        if not visited[i][j] and arr[i][j] != 0:
+            q.append([i,j])
+            visited[i][j] = True
+            cnt = 1
 
-#             while q:
-#                 x,y = q.popleft()
-#                 for d in dir:
-#                     nx = x+d[0]
-#                     ny = y+d[1]
-#                     if -1<nx<n and -1<ny<n and not visited[nx][ny] and arr[nx][ny] != 0:
-#                         q.append([nx,ny])
-#                         visited[nx][ny] = True
-#                         cnt += 1
+            while q:
+                x,y = q.popleft()
+                for d in dir:
+                    nx = x+d[0]
+                    ny = y+d[1]
+                    if -1<nx<n and -1<ny<n and not visited[nx][ny] and arr[nx][ny] != 0:
+                        q.append([nx,ny])
+                        visited[nx][ny] = True
+                        cnt += 1
 
-#             answer = max(answer,cnt)
-# print(answer)
+            answer = max(answer,cnt)
+print(answer)
 
 # def choose(S,temp):
 #     if len(temp) == 6:
