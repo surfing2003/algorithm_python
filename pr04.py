@@ -62,3 +62,18 @@ if flag:
     print("NO")
 else:
     print('\n'.join(answer))
+
+
+N = int(input())
+arr = list(map(int,input().split()))
+answer = []
+
+for i in range(N):
+    for j in range(i,N):
+        if arr[i] < arr[j]:
+            answer.append(arr[j])
+        elif j == N-1:
+            answer.append(-1)
+
+print(' '.join(answer))
+    
