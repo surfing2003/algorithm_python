@@ -36,44 +36,56 @@
 #     else:
 #         print("no")
 
-import sys
-input = lambda : sys.stdin.readline().rstrip()
+# import sys
+# input = lambda : sys.stdin.readline().rstrip()
 
-N = int(input())
-arr = [int(input()) for _ in range(N)]
-temp = []
-answer = []
-count = 0
-flag = False
-for now in arr:
-    while count < now:
-        count += 1
-        temp.append(count)
-        answer.append("+")
+# N = int(input())
+# arr = [int(input()) for _ in range(N)]
+# temp = []
+# answer = []
+# count = 0
+# flag = False
+# for now in arr:
+#     while count < now:
+#         count += 1
+#         temp.append(count)
+#         answer.append("+")
     
-    if temp[-1] == now:
-        temp.pop()
-        answer.append("-")
-    else:
-        flag = True
-        break
+#     if temp[-1] == now:
+#         temp.pop()
+#         answer.append("-")
+#     else:
+#         flag = True
+#         break
 
-if flag:
-    print("NO")
-else:
-    print('\n'.join(answer))
+# if flag:
+#     print("NO")
+# else:
+#     print('\n'.join(answer))
 
+
+# 시간초과
+# N = int(input())
+# arr = list(map(int,input().split()))
+# answer = [-1] * N
+
+# for i in range(N):
+#     for j in range(i,N):
+#         if arr[i] < arr[j]:
+#             answer[i] = arr[j]
+#             break
+# print(*answer)
+    
 
 N = int(input())
 arr = list(map(int,input().split()))
-answer = []
+temp = []
+answer = [-1] * N
 
 for i in range(N):
-    for j in range(i,N):
-        if arr[i] < arr[j]:
-            answer.append(arr[j])
-        elif j == N-1:
-            answer.append(-1)
+    while len(temp) != 0 and arr[temp[-1]] < arr[i]:
+        answer[temp.pop()] = arr[i]
+    temp.append(i)
 
-print(' '.join(answer))
-    
+print(*answer)
+
