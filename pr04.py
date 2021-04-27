@@ -35,3 +35,30 @@
 #         print("yes")
 #     else:
 #         print("no")
+
+import sys
+input = lambda : sys.stdin.readline().rstrip()
+
+N = int(input())
+arr = [int(input()) for _ in range(N)]
+temp = []
+answer = []
+count = 0
+flag = False
+for now in arr:
+    while count < now:
+        count += 1
+        temp.append(count)
+        answer.append("+")
+    
+    if temp[-1] == now:
+        temp.pop()
+        answer.append("-")
+    else:
+        flag = True
+        break
+
+if flag:
+    print("NO")
+else:
+    print('\n'.join(answer))
