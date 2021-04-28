@@ -125,13 +125,22 @@
 #         else:
 #             print(0)
 
-from collections import deque
+# from collections import deque
 
-q = deque(range(1,int(input())+1))
+# q = deque(range(1,int(input())+1))
 
-while len(q) != 1:
-    print(q)
-    q.popleft()
-    q.rotate(-1)
+# while len(q) != 1:
+#     q.popleft()
+#     q.rotate(-1)
 
-print(q[0])
+# print(q[0])
+
+# N,K = map(int,input().split())
+# q = list(range(1,N+1))
+# answer = []
+# idx = 0
+# while q:
+#     idx = ((idx + K-1) % len(q))
+#     answer.append(str(q.pop(idx)))
+
+# print("<{}>".format(', '.join(answer)))
