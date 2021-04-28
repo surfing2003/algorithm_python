@@ -89,38 +89,49 @@
 
 # print(*answer)
 
-import sys
+# import sys
+# from collections import deque
+
+# input = lambda : sys.stdin.readline().rstrip()
+# q = deque()
+# for _ in range(int(input())):
+#     temp = input().split()
+
+#     if temp[0] == "push":
+#         q.append(temp[1])
+#     elif temp[0] == "pop":
+#         if q:
+#             print(q.popleft())
+#         else:
+#             print(-1)
+#     elif temp[0] == "front":
+#         if q:
+#             print(q[0])
+#         else:
+#             print(-1)
+
+#     elif temp[0] == "back":
+#         if q:
+#             print(q[-1])
+#         else:
+#             print(-1)
+    
+#     elif temp[0] == "size":
+#         print(len(q))
+    
+#     elif temp[0] == "empty":
+#         if not q:
+#             print(1)
+#         else:
+#             print(0)
+
 from collections import deque
 
-input = lambda : sys.stdin.readline().rstrip()
-q = deque()
-for _ in range(int(input())):
-    temp = input().split()
+q = deque(range(1,int(input())+1))
 
-    if temp[0] == "push":
-        q.append(temp[1])
-    elif temp[0] == "pop":
-        if q:
-            print(q.popleft())
-        else:
-            print(-1)
-    elif temp[0] == "front":
-        if q:
-            print(q[0])
-        else:
-            print(-1)
+while len(q) != 1:
+    print(q)
+    q.popleft()
+    q.rotate(-1)
 
-    elif temp[0] == "back":
-        if q:
-            print(q[-1])
-        else:
-            print(-1)
-    
-    elif temp[0] == "size":
-        print(len(q))
-    
-    elif temp[0] == "empty":
-        if not q:
-            print(1)
-        else:
-            print(0)
+print(q[0])
