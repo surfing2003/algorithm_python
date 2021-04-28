@@ -77,15 +77,50 @@
 # print(*answer)
     
 
-N = int(input())
-arr = list(map(int,input().split()))
-temp = []
-answer = [-1] * N
+# N = int(input())
+# arr = list(map(int,input().split()))
+# temp = []
+# answer = [-1] * N
 
-for i in range(N):
-    while len(temp) != 0 and arr[temp[-1]] < arr[i]:
-        answer[temp.pop()] = arr[i]
-    temp.append(i)
+# for i in range(N):
+#     while len(temp) != 0 and arr[temp[-1]] < arr[i]:
+#         answer[temp.pop()] = arr[i]
+#     temp.append(i)
 
-print(*answer)
+# print(*answer)
 
+import sys
+from collections import deque
+
+input = lambda : sys.stdin.readline().rstrip()
+q = deque()
+for _ in range(int(input())):
+    temp = input().split()
+
+    if temp[0] == "push":
+        q.append(temp[1])
+    elif temp[0] == "pop":
+        if q:
+            print(q.popleft())
+        else:
+            print(-1)
+    elif temp[0] == "front":
+        if q:
+            print(q[0])
+        else:
+            print(-1)
+
+    elif temp[0] == "back":
+        if q:
+            print(q[-1])
+        else:
+            print(-1)
+    
+    elif temp[0] == "size":
+        print(len(q))
+    
+    elif temp[0] == "empty":
+        if not q:
+            print(1)
+        else:
+            print(0)
