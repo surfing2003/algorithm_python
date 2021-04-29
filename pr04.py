@@ -144,3 +144,29 @@
 #     answer.append(str(q.pop(idx)))
 
 # print("<{}>".format(', '.join(answer)))
+
+# from collections import deque
+# T = int(input())
+
+# for _ in range(T):
+#     N,T = map(int,input().split())
+#     w = list(map(int,input().split()))
+#     q = deque()
+#     for i in w:
+#         if len(q) == T:
+#             q.append((i,1))
+#             continue
+#         q.append((i,0))
+
+#     count = 0
+#     w.sort(reverse=True)
+#     while q:
+#         temp = q.popleft()
+#         if temp[0] == w[0]:
+#             count += 1
+#             w.pop(0)
+#             if temp[1] == 1:
+#                 break
+#         else:
+#             q.append(temp)
+#     print(count)
