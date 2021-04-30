@@ -191,3 +191,38 @@
 #     answer += abs(i)
 #     q.popleft()
 # print(answer)
+
+import sys
+input = lambda : sys.stdin.readline().rstrip()
+
+T = int(input())
+
+for _ in range(T):
+    flag = False
+    time = list(input())
+    n = int(input())
+    arr = input()[1:-1].split(',')
+    if n == 0:
+        arr = []
+
+    l,r,d,flag = 0,0,True,False    
+    for t in time:
+        if t == "R":
+            d = not d
+        if t == "D":
+            if d:
+                l += 1
+            else:
+                r += 1
+        if l+r > n:
+            print("error")
+            flag = True
+            break
+    if flag:
+        continue
+    else:
+        temp = arr[l:n-r]
+        if d:
+            print("[{}]".format(",".join(temp)))
+        else:
+            print("[{}]".format(",".join(temp[::-1])))
