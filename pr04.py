@@ -171,23 +171,23 @@
 #             q.append(temp)
 #     print(count)
 
-from collections import deque
-N, T = map(int,input().split())
-arr = list(map(int,input().split()))
-q = deque(range(1,N+1))
-answer = 0
+# from collections import deque
+# N, T = map(int,input().split())
+# arr = list(map(int,input().split()))
+# q = deque(range(1,N+1))
+# answer = 0
 
-for a in arr:
-    i = 0
-    while a != q[i]:
-        i += 1
+# for a in arr:
+#     i = 0
+#     while a != q[i]:
+#         i += 1
 
-    if len(q) - i < i:
-        i = len(q) - i
-    else:
-        i = -i
+#     if len(q) - i < i:
+#         i = len(q) - i
+#     else:
+#         i = -i
 
-    q.rotate(i)
-    answer += abs(i)
-    q.popleft
-print(answer)
+#     q.rotate(i)
+#     answer += abs(i)
+#     q.popleft()
+# print(answer)
