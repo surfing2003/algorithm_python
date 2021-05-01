@@ -192,37 +192,54 @@
 #     q.popleft()
 # print(answer)
 
-import sys
-input = lambda : sys.stdin.readline().rstrip()
+# import sys
+# input = lambda : sys.stdin.readline().rstrip()
 
-T = int(input())
+# T = int(input())
 
-for _ in range(T):
-    flag = False
-    time = list(input())
-    n = int(input())
-    arr = input()[1:-1].split(',')
-    if n == 0:
-        arr = []
+# for _ in range(T):
+#     flag = False
+#     time = list(input())
+#     n = int(input())
+#     arr = input()[1:-1].split(',')
+#     if n == 0:
+#         arr = []
 
-    l,r,d,flag = 0,0,True,False    
-    for t in time:
-        if t == "R":
-            d = not d
-        if t == "D":
-            if d:
-                l += 1
-            else:
-                r += 1
-        if l+r > n:
-            print("error")
-            flag = True
-            break
-    if flag:
-        continue
-    else:
-        temp = arr[l:n-r]
-        if d:
-            print("[{}]".format(",".join(temp)))
-        else:
-            print("[{}]".format(",".join(temp[::-1])))
+#     l,r,d,flag = 0,0,True,False    
+#     for t in time:
+#         if t == "R":
+#             d = not d
+#         if t == "D":
+#             if d:
+#                 l += 1
+#             else:
+#                 r += 1
+#         if l+r > n:
+#             print("error")
+#             flag = True
+#             break
+#     if flag:
+#         continue
+#     else:
+#         temp = arr[l:n-r]
+#         if d:
+#             print("[{}]".format(",".join(temp)))
+#         else:
+#             print("[{}]".format(",".join(temp[::-1])))
+
+
+N,M = map(int,input().split())
+A = [list(map(int,input().split())) for _ in range(N)]
+
+M,K = map(int,input().split())
+B = [list(map(int,input().split())) for _ in range(N)]
+
+C = [[0] * K for _ in range(N)]
+
+for n in range(N):
+    for k in range(K):
+        for m in range(M):
+            C[n][k] += A[n][m] * B[m][k]
+
+for c in C:
+    print(*c)
