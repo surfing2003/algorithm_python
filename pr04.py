@@ -244,28 +244,92 @@
 # for i in C:
 #     print(*i)
 
-N = int(input())
-M = int(input())
-INF = int(1e9)
-arr = [[INF]*N for _ in range(N)]
-for _ in range(M):
+# N = int(input())
+# M = int(input())
+# INF = int(1e9)
+# arr = [[INF]*N for _ in range(N)]
+# for _ in range(M):
+#     i,j,k = map(int,input().split())
+#     if arr[i-1][j-1] > k:
+#         arr[i-1][j-1] = k
+
+# for i in range(N):
+#     arr[i][i] = 0
+
+# for k in range(N):    
+#     for i in range(N):
+#         for j in range(N):
+#             if i != j:
+#                 arr[i][j] = min(arr[i][j],arr[i][k] + arr[k][j])
+
+# for a in arr:
+#     for i in a:
+#         if i == INF:
+#             print(0, end = ' ')
+#         else:
+#             print(i, end = ' ')
+#     print()
+
+
+# from collections import deque
+
+# V = int(input())
+# arr = [[] for _ in range(V+1)]
+
+# for _ in range(V):
+#     c = list(map(int,input().split()))
+#     for e in range(1,len(c)-2,2):
+#         arr[c[0]].append((c[e],c[e+1]))
+
+# def bfs(start):
+#     visited = [-1]*(V+1)
+#     q = deque()
+#     q.append(start)
+#     visited[start]=0
+#     max_e = [0,0]
+
+#     while q:
+#         now = q.popleft()
+#         for e,w in arr[now]:
+#             if visited[e] == -1:
+#                 visited[e] = visited[now] + w
+#                 q.append(e)
+#                 if max_e[0] < visited[e]:
+#                     max_e = visited[e],e
+#     return max_e
+
+# dis,node = bfs(1) 
+# dis,node = bfs(node)
+# print(dis)
+
+
+from collections import deque
+
+n = int(input())
+arr = [[] for _ in range(n+1)]
+
+for _ in range(n-1):
     i,j,k = map(int,input().split())
-    if arr[i-1][j-1] > k:
-        arr[i-1][j-1] = k
+    arr[i].append((j,k))
+    arr[j].append((i,k))
 
-for i in range(N):
-    arr[i][i] = 0
+def bfs(start):
+    visited = [-1]*(n+1)
+    q = deque()
+    q.append(start)
+    visited[start]=0
+    max_e = [0,0]
 
-for k in range(N):    
-    for i in range(N):
-        for j in range(N):
-            if i != j:
-                arr[i][j] = min(arr[i][j],arr[i][k] + arr[k][j])
+    while q:
+        now = q.popleft()
+        for e,w in arr[now]:
+            if visited[e] == -1:
+                visited[e] = visited[now] + w
+                q.append(e)
+                if max_e[0] < visited[e]:
+                    max_e = visited[e],e
+    return max_e
 
-for a in arr:
-    for i in a:
-        if i == INF:
-            print(0, end = ' ')
-        else:
-            print(i, end = ' ')
-    print()
+dis,node = bfs(1) 
+dis,node = bfs(node)
+print(dis)
