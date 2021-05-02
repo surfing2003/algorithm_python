@@ -303,33 +303,35 @@
 # print(dis)
 
 
-from collections import deque
+# from collections import deque
 
-n = int(input())
-arr = [[] for _ in range(n+1)]
+# n = int(input())
+# arr = [[] for _ in range(n+1)]
 
-for _ in range(n-1):
-    i,j,k = map(int,input().split())
-    arr[i].append((j,k))
-    arr[j].append((i,k))
+# for _ in range(n-1):
+#     i,j,k = map(int,input().split())
+#     arr[i].append((j,k))
+#     arr[j].append((i,k))
 
-def bfs(start):
-    visited = [-1]*(n+1)
-    q = deque()
-    q.append(start)
-    visited[start]=0
-    max_e = [0,0]
+# def bfs(start):
+#     visited = [-1]*(n+1)
+#     q = deque()
+#     q.append(start)
+#     visited[start]=0
+#     max_e = [0,0]
 
-    while q:
-        now = q.popleft()
-        for e,w in arr[now]:
-            if visited[e] == -1:
-                visited[e] = visited[now] + w
-                q.append(e)
-                if max_e[0] < visited[e]:
-                    max_e = visited[e],e
-    return max_e
+#     while q:
+#         now = q.popleft()
+#         for e,w in arr[now]:
+#             if visited[e] == -1:
+#                 visited[e] = visited[now] + w
+#                 q.append(e)
+#                 if max_e[0] < visited[e]:
+#                     max_e = visited[e],e
+#     return max_e
 
-dis,node = bfs(1) 
-dis,node = bfs(node)
-print(dis)
+# dis,node = bfs(1) 
+# dis,node = bfs(node)
+# print(dis)
+
+# 트리의 지름은 한번 탐색해서 가장 먼 노드에서 다시 탐색을 하면 찾을 수 있다. 
