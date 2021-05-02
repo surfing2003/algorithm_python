@@ -228,18 +228,44 @@
 #             print("[{}]".format(",".join(temp[::-1])))
 
 
-N,M = map(int,input().split())
-A = [list(map(int,input().split())) for _ in range(N)]
+# N,M = map(int,input().split())
+# A = [list(map(int,input().split())) for _ in range(N)]
 
-M,K = map(int,input().split())
-B = [list(map(int,input().split())) for _ in range(N)]
+# M,K = map(int,input().split())
+# B = [list(map(int,input().split())) for _ in range(N)]
 
-C = [[0] * K for _ in range(N)]
+# C = [[0] * K for _ in range(N)]
 
-for n in range(N):
-    for k in range(K):
-        for m in range(M):
-            C[n][k] += A[n][m] * B[m][k]
+# for ni in range(N):
+#     for ki in range(K):
+#         for mi in range(M):
+#             C[ni][ki] += A[ni][mi] * B[mi][ki]
 
-for c in C:
-    print(*c)
+# for i in C:
+#     print(*i)
+
+N = int(input())
+M = int(input())
+INF = int(1e9)
+arr = [[INF]*N for _ in range(N)]
+for _ in range(M):
+    i,j,k = map(int,input().split())
+    if arr[i-1][j-1] > k:
+        arr[i-1][j-1] = k
+
+for i in range(N):
+    arr[i][i] = 0
+
+for k in range(N):    
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                arr[i][j] = min(arr[i][j],arr[i][k] + arr[k][j])
+
+for a in arr:
+    for i in a:
+        if i == INF:
+            print(0, end = ' ')
+        else:
+            print(i, end = ' ')
+    print()
