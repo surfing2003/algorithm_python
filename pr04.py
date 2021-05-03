@@ -335,3 +335,32 @@
 # print(dis)
 
 # 트리의 지름은 한번 탐색해서 가장 먼 노드에서 다시 탐색을 하면 찾을 수 있다. 
+
+from heapq import heappop, heappush
+
+INF = int(1e9)
+
+V,E = map(int,input().split())
+start = int(input())
+arr = [[] for _ in range(V+1)]
+
+for _ in range(E):
+    i,j,w = map(int,input().split())
+    arr[i].append((j,w))
+
+dp = [INF] * (V+1)
+heap = []
+def dijkstra(start):
+    dp[start] = 0
+    heappush(heap,(0,start))
+    while heap:
+        w,n = heappop(heap)
+        for dn, dw in arr[n]:
+            nw = w+dw
+            if nw < dp[dn]:
+                dp[dn] = nw
+                heappush(heap,(nw,dn))
+
+dijkstra(start)
+for i in dp[1:]:
+    print(i if i != INF else "INF")
