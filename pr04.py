@@ -396,32 +396,30 @@
 
 #     solve_bf(bf,graph,N,M)
 
-
-temp = input()
-stack = []
-answer = ''
-for t in temp:
-    if t.isalpha():
-        answer += t
-    else:
-        if t == '(':
-            stack.append(t)
+# temp = input()
+# stack = []
+# answer = ''
+# for t in temp:
+#     if t.isalpha():
+#         answer += t
+#     else:
+#         if t == '(':
+#             stack.append(t)
         
-        elif t == '*' or t == '/':
-            while stack and (stack[-1]=='*' or stack[-1]=='/'):
-                answer += stack.pop()
-            stack.append(t)
+#         elif t == '*' or t == '/':
+#             while stack and (stack[-1]=='*' or stack[-1]=='/'):
+#                 answer += stack.pop()
+#             stack.append(t)
 
-        elif t == '+' or t == '-':
-            while stack and stack[-1] != '(':
-                answer += stack.pop()
-            stack.append(t)
+#         elif t == '+' or t == '-':
+#             while stack and stack[-1] != '(':
+#                 answer += stack.pop()
+#             stack.append(t)
         
-        elif t == ')':
-            while stack and stack[-1] != '(':
-                answer += stack.pop()
-            stack.pop()
-
-while stack:
-    answer += stack.pop()
-print(answer)
+#         elif t == ')':
+#             while stack and stack[-1] != '(':
+#                 answer += stack.pop()
+#             stack.pop()
+# while stack:
+#     answer += stack.pop()
+# print(answer)
