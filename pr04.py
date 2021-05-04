@@ -336,31 +336,92 @@
 
 # 트리의 지름은 한번 탐색해서 가장 먼 노드에서 다시 탐색을 하면 찾을 수 있다. 
 
-from heapq import heappop, heappush
+# from heapq import heappop, heappush
 
-INF = int(1e9)
+# INF = int(1e9)
 
-V,E = map(int,input().split())
-start = int(input())
-arr = [[] for _ in range(V+1)]
+# V,E = map(int,input().split())
+# start = int(input())
+# arr = [[] for _ in range(V+1)]
 
-for _ in range(E):
-    i,j,w = map(int,input().split())
-    arr[i].append((j,w))
+# for _ in range(E):
+#     i,j,w = map(int,input().split())
+#     arr[i].append((j,w))
 
-dp = [INF] * (V+1)
-heap = []
-def dijkstra(start):
-    dp[start] = 0
-    heappush(heap,(0,start))
-    while heap:
-        w,n = heappop(heap)
-        for dn, dw in arr[n]:
-            nw = w+dw
-            if nw < dp[dn]:
-                dp[dn] = nw
-                heappush(heap,(nw,dn))
+# dp = [INF] * (V+1)
+# heap = []
+# def dijkstra(start):
+#     dp[start] = 0
+#     heappush(heap,(0,start))
+#     while heap:
+#         w,n = heappop(heap)
+#         for dn, dw in arr[n]:
+#             nw = w+dw
+#             if nw < dp[dn]:
+#                 dp[dn] = nw
+#                 heappush(heap,(nw,dn))
 
-dijkstra(start)
-for i in dp[1:]:
-    print(i if i != INF else "INF")
+# dijkstra(start)
+# for i in dp[1:]:
+#     print(i if i != INF else "INF")
+
+# T = int(input())
+# INF = int(1e9)
+# def solve_bf(bf,graph,N,M):
+#     bf[1] = 0
+#     for i in range(N):
+#         for v in range(1,N+1):
+#             for nv,nw in graph[v]:
+#                 if bf[nv] > bf[v] + nw:
+#                     bf[nv] =  bf[v]+nw
+#                     if i == N-1:
+#                         print("YES")
+#                         return
+#     print("NO")
+#     return
+
+# for _ in range(T):
+#     N,M,W = map(int,input().split())
+#     graph = [[] for _ in range(N+1)]
+#     bf = [INF] * (N+1)
+
+#     for _ in range(M):
+#         s,e,t = map(int,input().split())
+#         graph[s].append([e,t])
+#         graph[e].append([s,t])
+
+#     for _ in range(W):
+#         s,e,t = map(int,input().split())
+#         graph[s].append([e,-t])
+
+#     solve_bf(bf,graph,N,M)
+
+
+temp = input()
+stack = []
+answer = ''
+for t in temp:
+    if t.isalpha():
+        answer += t
+    else:
+        if t == '(':
+            stack.append(t)
+        
+        elif t == '*' or t == '/':
+            while stack and (stack[-1]=='*' or stack[-1]=='/'):
+                answer += stack.pop()
+            stack.append(t)
+
+        elif t == '+' or t == '-':
+            while stack and stack[-1] != '(':
+                answer += stack.pop()
+            stack.append(t)
+        
+        elif t == ')':
+            while stack and stack[-1] != '(':
+                answer += stack.pop()
+            stack.pop()
+
+while stack:
+    answer += stack.pop()
+print(answer)
