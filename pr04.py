@@ -517,3 +517,22 @@
 #         answer += 1 if sum(j) == S else 0
 
 # print(answer)
+
+# N = int(input())
+# dp = [[] for _ in range(N+1)]
+
+# dp[1].append(1)
+# for i in range(2,N+1):
+
+#     dp[i] = dp[i-1] + [i]
+#     if i % 2 == 0:
+#         temp =  dp[i//2] + [i]
+#         if len(temp) < len(dp[i]):
+#             dp[i] = temp
+#     if i % 3 == 0:
+#         temp =  dp[i//3] + [i]
+#         if len(temp) < len(dp[i]):
+#             dp[i] = temp
+
+# print(len(dp[N])-1)
+# print(*dp[N][::-1])
