@@ -488,3 +488,22 @@
 #         print(len(q))
 #     elif temp[0] == "empty":
 #         print(0 if q else 1)
+
+# import sys
+# from itertools import permutations
+# N = int(input())
+# K = int(input())
+# a = [input() for _ in range(N)]
+
+# # 오류
+# # 예외 (2,12) , (21,2)
+# print(set(permutations(a,K)))
+# print(len(set(permutations(a,K))))
+
+# answer = set()
+# for line in list(permutations(a,K)):
+#     answer.add(''.join(line))
+# print
+# print(len(answer))
+
+# print(len(set([''.join(j)for j in permutations(a,K)])))
