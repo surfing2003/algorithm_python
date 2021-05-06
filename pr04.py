@@ -459,3 +459,32 @@
 #         arr[1][j] += max(arr[0][j-1],arr[0][j-2])
     
 #     print(max(arr[0][N-1],arr[1][N-1]))
+
+# import sys
+# from collections import deque
+
+# input = lambda : sys.stdin.readline().rstrip()
+# T = int(input())
+# q = deque()
+# for _ in range(T):
+#     temp = input().split()
+    
+#     if temp[0] == "push_front":
+#         q.appendleft(int(temp[1]))
+#     elif temp[0] == "push_back":
+#         q.append(int(temp[1]))
+
+#     elif temp[0] == "pop_front":
+#         print(q.popleft() if q else -1)
+#     elif temp[0] == "pop_back":
+#         print(q.pop() if q else -1)
+
+#     elif temp[0] == "front":
+#         print(q[0] if q else -1)
+#     elif temp[0] == "back":
+#         print(q[-1] if q else -1)
+    
+#     elif temp[0] == "size":
+#         print(len(q))
+#     elif temp[0] == "empty":
+#         print(0 if q else 1)
