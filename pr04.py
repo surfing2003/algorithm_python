@@ -507,3 +507,13 @@
 # print(len(answer))
 
 # print(len(set([''.join(j)for j in permutations(a,K)])))
+
+# from itertools import combinations
+# N, S = map(int,input().split())
+# arr = list(map(int,input().split()))
+# answer = 0
+# for i in range(1,N+1):
+#     for j in combinations(arr,i):
+#         answer += 1 if sum(j) == S else 0
+
+# print(answer)
