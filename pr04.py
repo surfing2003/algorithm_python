@@ -552,3 +552,5 @@
 #             print(-heapq.heappop(heap))
 #         except:
 #             print(0)
+
+# check
