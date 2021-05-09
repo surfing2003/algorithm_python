@@ -556,3 +556,14 @@
 # A,B,V = map(int,input().split())
 # k = (V-B)/(A-B)
 # print( int(k) if k == int(k) else int(k)+1)
+
+
+# T = int(input())
+# for _ in range(T):
+#     H,W,N = map(int,input().split())
+#     a = N%H
+#     b = N//H+1
+#     if a == 0: 
+#         a = H
+#         b -= 1
+#     print(a*100 + b)
