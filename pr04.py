@@ -553,8 +553,6 @@
 #         except:
 #             print(0)
 
-# 4
-# 트랩을 홀수번 밟아 간선이 뒤집혀있을 때와 짝수번 밟아 간선이 정방향일 때 즉 2N개의 정점에 대한 다익스트라를 2차원 dist 배열로 관리
-
-# 13209
-
+# A,B,V = map(int,input().split())
+# k = (V-B)/(A-B)
+# print( int(k) if k == int(k) else int(k)+1)
