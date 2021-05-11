@@ -581,3 +581,5 @@
 #             people[j] += people[j-1]
 
 #     print(people[-1])
+
+print(sum(map(int,input().split())))
