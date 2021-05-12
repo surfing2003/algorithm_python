@@ -582,4 +582,7 @@
 
 #     print(people[-1])
 
-print(sum(map(int,input().split())))
+# print(sum(map(int,input().split())))
+
+# x,y,w,h = map(int,input().split())
+# print(min(x,y,abs(w-x),abs(h-y)))
