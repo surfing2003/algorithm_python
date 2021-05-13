@@ -591,3 +591,11 @@
 # r = int(input())
 # print(f'{r*r*math.pi:.6f}')
 # print(f'{r*r*2:.6f}')
+
+
+x = y = 0
+for _ in range(3):
+    nx,ny = map(int,input().split())
+    x ^= nx
+    y ^= ny
+print(x,y)
