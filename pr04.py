@@ -593,9 +593,19 @@
 # print(f'{r*r*2:.6f}')
 
 
-x = y = 0
-for _ in range(3):
-    nx,ny = map(int,input().split())
-    x ^= nx
-    y ^= ny
-print(x,y)
+# x = y = 0
+# for _ in range(3):
+#     nx,ny = map(int,input().split())
+#     x ^= nx
+#     y ^= ny
+# print(x,y)
+
+# while True:
+#     arr = list(map(int,input().split()))
+#     if not all(arr):
+#         break
+#     arr.sort()
+#     if arr[2]**2 == arr[0]**2 + arr[1]**2:
+#         print("right")
+#     else:
+#         print("wrong")
