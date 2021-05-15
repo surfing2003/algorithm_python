@@ -641,3 +641,39 @@
 #         if flag:
 #             answer += 1
 # print(answer)
+
+# def check(n):
+#     if n == 1:
+#         return False
+#     for i in range(2,n):
+#         if n % i == 0:
+#             return False
+#     return True
+
+# N = int(input())
+# M = int(input())
+
+# answer = []
+# for number in range(N,M+1):
+#     if check(number):
+#         answer.append(number)
+# if answer:
+#     print(sum(answer))
+#     print(min(answer))
+# else:
+#     print(-1)
+
+# arr =[False, False] + [True]*9999
+
+# for i in range(2,101):
+#     if arr[i]:
+#         for j in range(i*2,len(arr),i):
+#             arr[j] = False
+# m = int(input())
+# n = int(input())
+# nums = [i for i in range(m,n+1) if arr[i]]
+# if nums:
+#     print(sum(nums))
+#     print(min(nums))
+# else:
+#     print(-1)
