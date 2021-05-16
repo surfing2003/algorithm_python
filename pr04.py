@@ -677,3 +677,25 @@
 #     print(min(nums))
 # else:
 #     print(-1)
+
+# 1564 ms
+# N = int(input())
+# div = 2
+# while N != 1:
+#     while N % div == 0:
+#         N //= div
+#         print(div)
+#     div += 1
+
+# 72 ms
+# N = int(input())
+# div = 2
+# # 이부분?
+# r = int(N ** 0.5)
+# while div <= r:
+#     while not N % div:
+#         print(div)
+#         N //= div
+#     div += 1
+# if N > 1:
+#     print(N)
