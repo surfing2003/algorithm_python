@@ -716,3 +716,30 @@
 #     if check(num):
 #         print(num)
 
+# def check(num):
+#     if num == 1:
+#         return False
+#     else:
+#         for i in range(2,int(num**0.5)+1):
+#             if num % i == 0:
+#                 return False
+#         return True
+
+# li = list(range(2,246912))
+# prime_li = []
+# for i in li:
+#     if check(i):
+#         prime_li.append(i)
+
+# while True:
+#     N = int(input())
+#     answer = 0
+#     if N == 0:
+#         break
+
+#     for num in prime_li:
+#         if N < num <= 2*N:
+#             answer += 1
+#         elif num > 2*N:
+#             break
+#     print(answer)
