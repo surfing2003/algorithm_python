@@ -744,6 +744,7 @@
 #             break
 #     print(answer)
 
+### 9020
 # prime_li = [0 for i in range(10001)]
 # prime_li[1] = 1
 
@@ -759,3 +760,20 @@
 #         if prime_li[a-j] == 0 and prime_li[j] == 0:
 #             print(j,a-j)
 #             break
+
+### 1011
+# T = int(input())
+# for _ in range(T):
+#     a,b = map(int,input().split())
+#     c = b - a
+#     n = 1
+#     while True:
+#         if n ** 2 <= c < (n + 1) ** 2:
+#             break
+#         n += 1
+#     if n ** 2 == c:
+#         print((n * 2) - 1)
+#     elif n ** 2 < c <= n ** 2 + n:
+#         print(n * 2)
+#     else:
+#         print((n * 2) + 1)
