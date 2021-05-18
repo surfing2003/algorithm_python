@@ -743,3 +743,19 @@
 #         elif num > 2*N:
 #             break
 #     print(answer)
+
+# prime_li = [0 for i in range(10001)]
+# prime_li[1] = 1
+
+# for i in range(2,98):
+#     for j in range(i*2, 10001,i):
+#         prime_li[j] = 1
+
+# T = int(input())
+# for _ in range(T):
+#     a = int(input())
+#     b = a // 2
+#     for j in range(b,1,-1):
+#         if prime_li[a-j] == 0 and prime_li[j] == 0:
+#             print(j,a-j)
+#             break
