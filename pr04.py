@@ -793,3 +793,22 @@
 # arr = list(map(int,input().split()))
 # arr.sort()
 # print(arr[0]*arr[-1])
+
+# 유클리드 호제법
+# 최대 공약수
+# a와 b(a>b) 의 최대 공약수 G는 b와 a%b의 최대 공약수 G과 서로 같다.
+# 최소 공배수
+# a == x*G / b == y*G >> (a*b)/G == (x*y*G^2) / G == x*y*G == L
+# a, b = map(int,input().split())
+
+# if a >= b:
+#     A, B = a, b
+# else:
+#     A, B = b, a
+
+# while B != 0:
+#     A = A % B
+#     A,B = B, A
+
+# print(A)
+# print(a*b//A)
