@@ -829,3 +829,14 @@
 # n, k = map(int, input().split())
 # b = factorial(n) // (factorial(k) * factorial(n - k))
 # print(b)
+
+n,k = map(int,input().split())
+a = 1
+b = 1
+
+while k:
+    a *= n
+    b *= k
+    n -= 1
+    k -= 1
+print(a//b)
