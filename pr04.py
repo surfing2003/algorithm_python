@@ -812,3 +812,15 @@
 
 # print(A)
 # print(a*b//A)
+
+# def g(a,b):
+#     return g(b,a%b) if b else a
+
+# def l(a,b):
+#     return (a*b) // g(a,b)
+
+# T = int(input())
+
+# for _ in range(T):
+#     a,b = map(int,input().split())
+#     print(l(a,b))
