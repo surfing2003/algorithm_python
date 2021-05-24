@@ -840,3 +840,14 @@
 #     n -= 1
 #     k -= 1
 # print(a//b)
+
+# N, K = map(int,input().split())
+# a = 1
+# b = 1
+
+# while K:
+#     a *= N
+#     b *= K
+#     N -= 1
+#     K -= 1
+# print((a//b)%10007)
