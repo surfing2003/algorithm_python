@@ -851,3 +851,28 @@
 #     N -= 1
 #     K -= 1
 # print((a//b)%10007)
+
+# arr = [16,12,17,48,85]
+
+# for i in range(5):
+#     for j in range(i+1,5):
+#         print(i,j)
+#         if arr[i] > arr[j]:
+#             arr[i], arr[j] = arr[j],arr[i]
+
+# print(arr[2])
+
+# T = int(input())
+# def com(N,K):
+#     a = 1
+#     b = 1
+#     while K:
+#         a *= N
+#         b *= K
+#         N -= 1
+#         K -= 1
+#     return a//b
+
+# for _ in range(T):
+#     K, N = map(int,input().split())
+#     print(com(N,K))
