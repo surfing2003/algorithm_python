@@ -876,3 +876,19 @@
 # for _ in range(T):
 #     K, N = map(int,input().split())
 #     print(com(N,K))
+
+
+# from collections import Counter
+
+# T = int(input())
+# for _ in range(T):
+#     N = int(input())
+#     s = []
+#     for _ in range(N):
+#         a, b = input().split()
+#         s.append(b)
+#     answer = 1
+#     result = Counter(s)
+#     for k in result:
+#         answer *= (result[k] + 1)
+#     print(answer - 1)
