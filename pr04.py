@@ -892,3 +892,20 @@
 #     for k in result:
 #         answer *= (result[k] + 1)
 #     print(answer - 1)
+
+
+# def div_n(k,n):
+#     cnt = 0
+#     while (k != 0):
+#         # print(k,cnt)
+#         k //= n
+#         cnt += k
+#     # print("return :",cnt)
+#     return cnt
+
+# n, m = map(int,input().split())
+
+# div_five = div_n(n,5) - div_n(m,5) - div_n(n-m,5)
+# div_two = div_n(n,2) - div_n(m,2) - div_n(n-m,2)
+
+# print(min(div_five,div_two))
