@@ -893,7 +893,6 @@
 #         answer *= (result[k] + 1)
 #     print(answer - 1)
 
-
 # def div_n(k,n):
 #     cnt = 0
 #     while (k != 0):
@@ -909,3 +908,15 @@
 # div_two = div_n(n,2) - div_n(m,2) - div_n(n-m,2)
 
 # print(min(div_five,div_two))
+
+
+
+# def gcd(a,b):
+#     return gcd(b,a%b) if b else a
+
+# N = int(input())
+# arr = list(map(int,input().split()))
+
+# for i in range(1,N):
+#     g = gcd(arr[0],arr[i])
+#     print('{}/{}'.format(arr[0]//g,arr[i]//g))
