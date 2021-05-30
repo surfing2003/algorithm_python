@@ -920,3 +920,14 @@
 # for i in range(1,N):
 #     g = gcd(arr[0],arr[i])
 #     print('{}/{}'.format(arr[0]//g,arr[i]//g))
+
+s = [[], [1], [6, 2, 4, 8], [1, 3, 9, 7], [6, 4], [5], [6], [1, 7, 9, 3], [6, 8, 4, 2], [1, 9]]
+t = int(input())
+for _ in range(t):
+    a, b = map(int, input().split())
+    a %= 10
+    if a != 0:
+        print(s[a][b % len(s[a])])
+    else:
+        print(10)
+
