@@ -55,6 +55,7 @@
 #     print(i)
 #     print(' '*(N-abs(i)-1) + '*'*(2*abs(i)+1))
 
+################# 시간복잡도 확인
 # 752ms
 # N, M = map(int,input().split())
 # num = 1
@@ -77,3 +78,4 @@
 # n, m = map(int, input().split())
 # for i in range(1, 1 + n*m, m):
 #     print(' '.join(map(str, range(i, i+m))))
+####################################################
