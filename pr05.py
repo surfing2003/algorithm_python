@@ -133,3 +133,15 @@
 # print("Chicago        8   8  0")
 # print("Detroit        7   9  0")
 # print("Minnesota      5  10  1")
+
+
+# def solution(lottos, win_nums):
+#     t = [6,6,5,4,3,2,1]
+    
+#     z = lottos.count(0)
+#     temp = 0
+#     for i in lottos:
+#         if i in win_nums:
+#             temp += 1
+    
+#     return t[temp+z],t[temp]
