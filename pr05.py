@@ -162,3 +162,11 @@
 #             answer += 1
     
 #     return answer
+
+# def solution(nums):
+#     n_1 = len(set(nums))
+#     n_2 = len(nums)//2
+#     return n_2 if n_1 >= n_2 else n_1
+
+# def solution(nums):
+#     return min(len(set(nums)),len(nums)//2)
