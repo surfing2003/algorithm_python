@@ -218,3 +218,32 @@
 # for i in range(N):
 #     answer += ((ord(s[i])-96) * (31**i)) % 1234567891
 # print(answer % 1234567891)
+
+# dict 사용
+# N = int(input())
+# cards = input().split()
+# dict_cards = {}
+# for i in cards:
+#     if i in dict_cards.keys():
+#         dict_cards[i] += 1
+#     else:
+#         dict_cards[i] = 1
+
+# M = int(input())
+# check_cards = input().split()
+# for i in check_cards:
+#     if i in dict_cards.keys():
+#         print(dict_cards[i],end=' ')
+#     else:
+#         print(0,end=" ")
+
+# 카운터 사용
+# from collections import Counter
+# N = int(input())
+# N_list = input().split()
+# M = int(input())
+# M_list = input().split()
+
+# C = Counter(N_list)
+# print(' '.join(f'{C[m]}' if m in C else '0' for m in M_list))
+# print(' '.join(str(C[m]) if m in C else '0' for m in M_list))
