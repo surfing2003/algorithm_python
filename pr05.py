@@ -209,3 +209,12 @@
 #     else:
 #         end = mid - 1
 # print(max(answer))
+
+# print(ord("a")-96,ord("z")-96)
+
+# N = int(input())
+# s = input()
+# answer = 0
+# for i in range(N):
+#     answer += ((ord(s[i])-96) * (31**i)) % 1234567891
+# print(answer % 1234567891)
