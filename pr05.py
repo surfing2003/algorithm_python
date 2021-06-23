@@ -187,3 +187,25 @@
 #         end = mid - 1
 
 # print(end)
+
+# N, M = map(int,input().split())
+# trees = list(map(int,input().split()))
+
+# start = 0
+# end = max(trees)
+
+# answer = []
+# while not end < start:
+
+#     mid = (start+end)//2
+#     log = sum(i-mid if i > mid else 0 for i in trees)
+
+#     if log == M:
+#         answer.append(mid)
+#         break
+#     elif log > M:
+#         answer.append(mid)
+#         start = mid + 1
+#     else:
+#         end = mid - 1
+# print(max(answer))
