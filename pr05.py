@@ -247,3 +247,31 @@
 # C = Counter(N_list)
 # print(' '.join(f'{C[m]}' if m in C else '0' for m in M_list))
 # print(' '.join(str(C[m]) if m in C else '0' for m in M_list))
+
+# import sys
+# input = lambda : sys.stdin.readline().rstrip()
+
+# N,M,B = map(int,input().split())
+# arr = [list(map(int,input().split())) for _ in range(N)]
+
+# answer = int(1e10)
+# height = 0
+
+# for l in range(257):
+#     max_b = 0
+#     min_b = 0
+#     for i in range(N):
+#         for j in range(M):
+#             if arr[i][j] < l:
+#                 min_b += l-arr[i][j]
+#             else:
+#                 max_b += arr[i][j]-l
+#     total = max_b + B
+#     if total < min_b :
+#         continue
+#     time = 2 * max_b + min_b
+#     if time <= answer:
+#         answer = time
+#         height = l
+# print(answer,height)
+
