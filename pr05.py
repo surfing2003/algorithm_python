@@ -290,3 +290,5 @@
 # def solution(absolutes, signs):
 #     return sum(absolutes if sign else -absolutes for absolutes, sign in zip(absolutes, signs))
 
+# def solution(a, b):
+#     return sum( i*j for i,j in zip(a,b) )
