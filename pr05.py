@@ -292,3 +292,42 @@
 
 # def solution(a, b):
 #     return sum( i*j for i,j in zip(a,b) )
+
+################# 순서대로 조건 
+# def solution(new_id):
+#     new_id = new_id.lower()
+#     temp = ''
+#     for i in new_id:
+#         if i.isalnum() or i in '-_.':
+#             temp += i
+#     while '..' in temp:
+#         temp = temp.replace('..','.')
+#     if temp[0] == '.' and len(temp) > 1:
+#         temp = temp[1:]
+#     if temp[-1] == '.':
+#         temp = temp[:-1]
+#     if temp == '':
+#         temp = 'a'
+#     if len(temp) >= 16:
+#         temp = temp[:15]
+#         if temp[-1] == '.':
+#             temp = temp[:-1]
+#     if len(temp) <= 3:
+#         temp = temp + temp[-1]*(3-len(temp))    
+#     return temp
+
+# 정규식 활용
+# import re
+
+# def solution(new_id):
+#     st = new_id.lower()
+#     st = re.sub('[^a-z0-9\-_.]', '', st)
+#     st = re.sub('\.+', '.', st)
+#     st = re.sub('^[.]|[.]$', '', st)
+#     st = 'a' if len(st) == 0 else st[:15]
+#     st = re.sub('^[.]|[.]$', '', st)
+#     st = st if len(st) > 2 else st + st[-1]*(3-len(st))
+#     return st
+
+
+
