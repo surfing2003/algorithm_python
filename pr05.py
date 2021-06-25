@@ -329,5 +329,15 @@
 #     st = st if len(st) > 2 else st + st[-1]*(3-len(st))
 #     return st
 
-
-
+# def solution(s):
+#     temp = []
+#     temp.append(s[0])
+#     for i in s[1:]:
+#         if not temp:
+#             temp.append(i)
+#             continue
+#         if temp[-1] == i:
+#             temp.pop()
+#         else:
+#             temp.append(i)
+#     return 1 if not temp else 0
