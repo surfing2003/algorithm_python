@@ -393,40 +393,106 @@
 
 # print(solution(5,[[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]]))
 
-from collections import deque
+############################### 17836
+# 비효율 적인거같은데 
+# from collections import deque
 
-N,M,T = map(int,input().split())
+# N,M,T = map(int,input().split())
+# arr = [input().split() for _ in range(N)]
+# visited = [[-1]* M for _ in  range(N)]
+# dx = [-1,1,0,0]
+# dy = [0,0,-1,1]
 
-arr = [input().split() for _ in range(N)]
-visited = [[-1]* M for _ in  range(N)]
+# q = deque()
+# q.append([0,0,0])
+# visited[0][0] = 0
+# sword_time = -1
+# while q:
+#     x,y,c = q.popleft()
+#     if arr[x][y] == '2':
+#         sword_time = visited[x][y] + (N-1-x) + (M-1-y)
 
+#     for i in range(4):
+#         nx = x + dx[i]
+#         ny = y + dy[i]
 
-dx = [-1,1,0,0]
-dy = [0,0,-1,1]
+#         if 0 <= nx < N and 0 <= ny < M and arr[nx][ny] != '1' and visited[nx][ny] == -1:
+#             visited[nx][ny] = c+1
+#             q.append([nx,ny,c+1])
 
-q = deque()
-q.append([0,0,0])
-visited[0][0] = 0
-sword_time = -1
-while q:
-    x,y,c = q.popleft()
-    if arr[x][y] == '2':
-        sword_time = visited[x][y] + (N-1-x) + (M-1-y)
+# if visited[N-1][M-1] != -1 and sword_time != -1:
+#     answer = min(visited[N-1][M-1],sword_time)
+#     print(answer if answer <= T else "Fail")
+# elif visited[N-1][M-1] == -1 and sword_time != -1:
+#     print(sword_time if sword_time <= T else "Fail")
+# elif visited[N-1][M-1] != -1 and sword_time == -1:
+#     print(visited[N-1][M-1] if visited[N-1][M-1] <= T else "Fail")
+# else:
+#     print("Fail")
 
-    for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
+# 함수
+# from collections import deque
 
-        if 0 <= nx < N and 0 <= ny < M and arr[nx][ny] != '1' and visited[nx][ny] == -1:
-            visited[nx][ny] = c+1
-            q.append([nx,ny,c+1])
+# dx = [-1,1,0,0]
+# dy = [0,0,-1,1]
 
-if visited[N-1][M-1] != -1 and sword_time != -1:
-    answer = min(visited[N-1][M-1],sword_time)
-    print(answer if answer <= T else "Fail")
-elif visited[N-1][M-1] == -1 and sword_time != -1:
-    print(sword_time if sword_time <= T else "Fail")
-elif visited[N-1][M-1] != -1 and sword_time == -1:
-    print(visited[N-1][M-1] if visited[N-1][M-1] <= T else "Fail")
-else:
-    print("Fail")
+# N,M,T = map(int,input().split())
+# arr = [list(map(int,input().split())) for _ in range(N)]
+# visited = [[-1] * M for _ in range(N)]
+
+# def bfs():
+#     temp = int(1e9)
+#     q = deque()
+#     q.append((0,0))
+#     visited[0][0] = 0
+
+#     while q:
+#         x,y = q.popleft()
+#         if arr[x][y] == 2:
+#             temp = (N-1-x) + (M-1-y) + visited[x][y]
+#         if x == N-1 and y == M-1:
+#             return min(temp,visited[x][y])
+        
+#         for i in range(4):
+#             nx = x + dx[i]
+#             ny = y + dy[i]
+#             if 0<=nx<N and 0<=ny<M and visited[nx][ny] == -1 and arr[nx][ny] != 1:
+#                 visited[nx][ny] = visited[x][y] + 1
+#                 q.append((nx,ny))
+#     return temp
+
+# answer = bfs()
+# print("Fail" if answer > T else answer)
+
+# 이렇게 안되는 이유 찾아보기
+# from collections import deque
+
+# dx = [-1,1,0,0]
+# dy = [0,0,-1,1]
+
+# N,M,T = map(int,input().split())
+# arr = [list(map(int,input().split())) for _ in range(N)]
+# visited = [[-1] * M for _ in range(N)]
+
+# answer = int(1e9)
+# q = deque()
+# q.append((0,0))
+# visited[0][0] = 0
+
+# while q:
+#     x,y = q.popleft()
+#     if arr[x][y] == 2:
+#         answer = (N-1-x) + (M-1-y) + visited[x][y]
+#     if x == N-1 and y == M-1:
+#         answer = min(answer,visited[x][y])
+    
+#     for i in range(4):
+#         nx = x + dx[i]
+#         ny = y + dy[i]
+#         if 0<=nx<N and 0<=ny<M and visited[nx][ny] == -1 and arr[nx][ny] != 1:
+#             visited[nx][ny] = visited[x][y] + 1
+#             q.append((nx,ny))
+
+# print("Fail" if answer > T else answer)
+
+#############################################################
