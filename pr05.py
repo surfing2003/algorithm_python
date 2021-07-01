@@ -342,31 +342,53 @@
 #             temp.append(i)
 #     return 1 if not temp else 0
 
-from collections import deque
+# from collections import deque
 
-def bfs(start,visited,arr):
-    count = 0
-    q = deque()
-    q.append((start, count))
-    while q:
-        now,c = q.popleft()
-        if visited[now] == -1:
-            visited[now] = c
-            for i in arr[now]:
-                q.append((i,c+1))
+# def bfs(start,visited,arr):
+#     count = 0
+#     q = deque()
+#     q.append((start, count))
+#     while q:
+#         now,c = q.popleft()
+#         if visited[now] == -1:
+#             visited[now] = c
+#             for i in arr[now]:
+#                 q.append((i,c+1))
 
-def solution(n, edge):
+# def solution(n, edge):
+#     answer = 0
+#     visited = [-1] * (n+1)
+#     arr = [[] for _ in  range(n+1)]
+#     for e in edge:
+#         arr[e[0]].append(e[1])
+#         arr[e[1]].append(e[0])
+
+#     bfs(1,visited,arr)
+#     for v in visited:
+#         if v == max(visited):
+#             answer += 1
+#     return answer
+
+# print(solution(6,[[3, 6], [4, 3], [3, 2], [1, 3], [1, 2], [2, 4], [5, 2]]))
+
+def solution(n, results):
+    win = {x:set() for x in range(1,n+1)}
+    lose = {x:set() for x in range(1,n+1)}
+    
+    for w,l in results:
+        win[w].add(l)
+        lose[l].add(w)
+    
+    for i in range(1,n+1):
+        for w in lose[i]:
+            win[w].update(win[i])
+        for l in win[i]:
+            lose[l].update(lose[i])
+    
     answer = 0
-    visited = [-1] * (n+1)
-    arr = [[] for _ in  range(n+1)]
-    for e in edge:
-        arr[e[0]].append(e[1])
-        arr[e[1]].append(e[0])
-
-    bfs(1,visited,arr)
-    for v in visited:
-        if v == max(visited):
+    for i in range(1,n+1):
+        if len(win[i]) + len(lose[i]) == n-1:
             answer += 1
     return answer
 
-print(solution(6,[[3, 6], [4, 3], [3, 2], [1, 3], [1, 2], [2, 4], [5, 2]]))
+print(solution(5,[[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]]))
