@@ -371,24 +371,62 @@
 
 # print(solution(6,[[3, 6], [4, 3], [3, 2], [1, 3], [1, 2], [2, 4], [5, 2]]))
 
-def solution(n, results):
-    win = {x:set() for x in range(1,n+1)}
-    lose = {x:set() for x in range(1,n+1)}
+# def solution(n, results):
+#     win = {x:set() for x in range(1,n+1)}
+#     lose = {x:set() for x in range(1,n+1)}
     
-    for w,l in results:
-        win[w].add(l)
-        lose[l].add(w)
+#     for w,l in results:
+#         win[w].add(l)
+#         lose[l].add(w)
     
-    for i in range(1,n+1):
-        for w in lose[i]:
-            win[w].update(win[i])
-        for l in win[i]:
-            lose[l].update(lose[i])
+#     for i in range(1,n+1):
+#         for w in lose[i]:
+#             win[w].update(win[i])
+#         for l in win[i]:
+#             lose[l].update(lose[i])
     
-    answer = 0
-    for i in range(1,n+1):
-        if len(win[i]) + len(lose[i]) == n-1:
-            answer += 1
-    return answer
+#     answer = 0
+#     for i in range(1,n+1):
+#         if len(win[i]) + len(lose[i]) == n-1:
+#             answer += 1
+#     return answer
 
-print(solution(5,[[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]]))
+# print(solution(5,[[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]]))
+
+from collections import deque
+
+N,M,T = map(int,input().split())
+
+arr = [input().split() for _ in range(N)]
+visited = [[-1]* M for _ in  range(N)]
+
+
+dx = [-1,1,0,0]
+dy = [0,0,-1,1]
+
+q = deque()
+q.append([0,0,0])
+visited[0][0] = 0
+sword_time = -1
+while q:
+    x,y,c = q.popleft()
+    if arr[x][y] == '2':
+        sword_time = visited[x][y] + (N-1-x) + (M-1-y)
+
+    for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+
+        if 0 <= nx < N and 0 <= ny < M and arr[nx][ny] != '1' and visited[nx][ny] == -1:
+            visited[nx][ny] = c+1
+            q.append([nx,ny,c+1])
+
+if visited[N-1][M-1] != -1 and sword_time != -1:
+    answer = min(visited[N-1][M-1],sword_time)
+    print(answer if answer <= T else "Fail")
+elif visited[N-1][M-1] == -1 and sword_time != -1:
+    print(sword_time if sword_time <= T else "Fail")
+elif visited[N-1][M-1] != -1 and sword_time == -1:
+    print(visited[N-1][M-1] if visited[N-1][M-1] <= T else "Fail")
+else:
+    print("Fail")
