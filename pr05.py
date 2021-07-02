@@ -496,3 +496,24 @@
 # print("Fail" if answer > T else answer)
 
 #############################################################
+
+
+# def solution(n, times):
+#     answer = 0
+
+#     start = 0
+#     end = max(times)*n
+
+#     while start <= end:
+#         mid = (start+end)//2
+#         temp = sum(mid//i for i in times)
+
+#         if temp >= n:
+#             answer = mid
+#             end = mid - 1
+#         elif temp < n:
+#             start = mid + 1
+
+#     return answer
+
+# print(solution(6,[7,10]))
