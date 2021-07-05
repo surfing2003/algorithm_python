@@ -517,3 +517,17 @@
 #     return answer
 
 # print(solution(6,[7,10]))
+
+# &연산자 > set 집합연산자
+# import sys
+# input = lambda : sys.stdin.readline().rstrip()
+
+# N,M = map(int,input().split())
+# N_list = [input() for _ in range(N)]
+# M_list = [input() for _ in range(M)]
+
+# answer = list(set(N_list) & set(M_list))
+# print(len(answer))
+# for i in sorted(answer):
+#     print(i)
+
