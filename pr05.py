@@ -531,3 +531,28 @@
 # for i in sorted(answer):
 #     print(i)
 
+# import sys
+# input = lambda : sys.stdin.readline().rstrip()
+
+# M = int(input())
+# S = set()
+# for _ in range(M):
+#     temp = input().split()
+#     if len(temp) == 2:
+#         c, t = temp[0],int(temp[1])
+#         if c == "add":
+#             S.add(t)
+#         elif c == "remove":
+#             S.discard(t)
+#         elif c == "check":
+#             print(1 if t in S else 0)
+#         elif c == "toggle":
+#             if t not in S:
+#                 S.add(t)
+#             else:
+#                 S.discard(t)
+#     else:
+#         if temp[0] == "all":
+#             S = set(list(range(1,21)))
+#         else:
+#             S = set()
