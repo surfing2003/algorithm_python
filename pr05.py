@@ -571,3 +571,45 @@
 
 # for _ in range(N):
 #     print(s(int(input())))
+
+
+#
+# import sys
+# sys.setrecursionlimit(300000)
+
+# def dfs(x, a, arr):
+#     global visited
+#     global answer
+#     global n
+    
+#     now = a[x]
+#     visited[x] = 1
+    
+#     for i in arr[x]:
+#         if visited[i] == 0:
+#             now += dfs(i, a, arr)
+            
+#     answer += abs(now)
+    
+#     return now
+    
+# def solution(a, edges):
+#     global visited
+#     global answer
+#     global n
+    
+#     answer = 0
+    
+#     if sum(a) != 0:
+#         return -1
+    
+#     n = len(a)
+#     arr = [[] for _ in range(n)]
+
+#     for i, j in edges:
+#         arr[i].append(j)
+#         arr[j].append(i)
+    
+#     visited = [0]*n
+#     dfs(0, a, arr)
+#     return answer
