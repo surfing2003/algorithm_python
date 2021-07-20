@@ -613,3 +613,23 @@
 #     visited = [0]*n
 #     dfs(0, a, arr)
 #     return answer
+
+# n = int(input())
+# answer = 4
+
+# for a in range(int(n**0.5),int((n//4)**0.5),-1):
+#     if a*a == n:
+#         answer = 1
+#         break
+#     else:
+#         temp = n - a*a
+#         for b in range(int(temp**0.5),int((temp//3)**0.5),-1):
+#             if a*a + b*b == n:
+#                 answer = min(answer,2)
+#                 continue
+#             else:
+#                 temp = n - a*a - b*b
+#                 for c in range(int(temp**0.5),int((temp//2)**0.5),-1):
+#                     if a*a + b*b + c*c == n:
+#                         answer = min(answer,3)
+# print(answer)
