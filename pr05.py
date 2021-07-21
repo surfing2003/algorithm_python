@@ -633,3 +633,17 @@
 #                     if a*a + b*b + c*c == n:
 #                         answer = min(answer,3)
 # print(answer)
+
+# import sys
+# input = lambda : sys.stdin.readline().rstrip()
+
+# N, M = map(int,input().split())
+
+# site = {}
+
+# for _ in range(N):
+#     add , password = input().split()
+#     site[add] = password
+
+# for _ in range(M):
+#     print(site[input()])
